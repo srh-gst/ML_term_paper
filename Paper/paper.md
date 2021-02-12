@@ -68,6 +68,9 @@ What is the crucial literature about the topic? What are the open research quest
 
 What is the epistemological framework of the dissertation? For empirical studies it should be made clear: Why were the specific methods of data analysis chosen? How was the data acquired?
 
+To explore these questions the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) are used (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in thier personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving while also comprising comprehensive background information on the respondents past and current education, subjective assessments of their skills and job requirements as well as information on migration (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The first cycle began in 2011/12 covering 40 countries. The second cycle started in 2018 and results are to be expected in 2022 (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
+For the study at hand the results of the first wave are used. The original dataset comprises 
+
 - Name, source, unit, time, structure, number of observations, relevant population.
 - Definition of (main) sample.
 - Definition and characteristics of key variables.
