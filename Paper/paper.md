@@ -79,16 +79,18 @@ The final dataset is cross-sectional with one observation representing the answe
 
 The 130 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income.
 As we do not restrict the dataset in terms of respondents but only in terms of questions answered, our final dataset comprises 230,691 observations of individuals.
-Of those 230,691 individuals, 122,830 are female and 107,859 are male (see figure \ref{hist_gender}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see figure \ref{hist_age}).  
-The classification of the respondents jobs in terms of skills is also evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see fiugre \ref{box_age_job}).  
+Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{hist_gender}. The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{hist_age}).  
+The classification of the respondents jobs in terms of skills is also evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Fiugre \ref{box_age_job}).  
 
 
 The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training, seminars or workshops, distance or open training courses as well as private lessons. 
 The simple OLS regressions reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training, seminars or workshops, distance or open educational training as well as for private lessons. However, for semi-skilled jobs, the picture is slightly different. Here, the number of seminars or workshops and private lessons are positively correlated with the semi-skilled occupations. 
 
-![Distribution of Gender\label{hist_gender}](E:\Data\krea\PIAAC\plots\barplot_gender.png)
-![Distribution of Age\label{hist_age}](E:\Data\krea\PIAAC\plots\hist_age.png)
-![Age and Classification of jobs\label{box_age_job}](E:\Data\krea\PIAAC\plots\box_age_job_classification.png)
+![Distribution of Gender\label{hist_gender}](..\Results\Plots\barplot_gender.png){ width=50% }
+
+![Distribution of Age\label{hist_age}](..\Results\Plots\hist_age.png){ width=50% }
+
+![Age and Classification of jobs\label{box_age_job}](..\Results\Plots\box_age_job_classification.png){ width=50% }
 
 
 
@@ -105,6 +107,14 @@ The simple OLS regressions reveal that there are positive correlations between t
 - Do NOT assume the reader knows anything about these data
 
 # Model and Methods
+
+In order to select the right set of covariates from our set of ..., we apply the Least absolute shrinkage and selection operator (Lasso) that was first proposed by @tibshirani1996regression. We start with a simple linear regression model $y = X \beta + \varepsilon$, where $y \in \mathbb{R}^N$ is the predicted participation in on-job or off-job training,  $X \in \mathbb{R}^{N \times k}$ are the vectors of covariates, and $\varepsilon \in \mathbb{R}^N$ is the residual with the standard assumptions of OLS. We add the Lasso penalty equal to $\sum_k |\beta_k|$. The Lasso estimator $\hat{\beta}$ is then given by
+
+$$ \hat{\beta} = argmin{\sum_i (y_i-x_i^T\beta)^2  + \lambda\sum_k |\beta_k|}  $$ {#eq:lasso}
+
+That is, we minimize the sum of squared residuals but the Lasso penalty puts a cost at every $\hat{\beta} \neq 0$ and thus, we penalize complexity. $\lambda >0$ is the penalty weight or the *tuning parameter*. Figure ... shows the lasso regularization path of candidate models $\hat{\beta}_1$ ... $\hat{\beta}_t$ that we obtained by minimizing Equation @eq:lasso over a sequence of tuning parameters $\lambda_1 < \lambda_2 < ... < \lambda_T$. The vertical axis contains different levels of $\hat{\beta}$. The horizontal axis contains different levels for $\lambda$. Each vertical section along the horizontal axis, represents one candidate model. Moving from higher to lower $\lambda$, the algorithm includes more nonzero $\hat{\beta}_k$ and becomes more complex. To find the optimal value for $\lambda$ we use *k-fold cross validation*. We split the data in k random evenly sized subset and derive the lasso paths $\hat{beta}_1^k$ ... $\hat{beta}_T^k$ on each of the folds but the k-th fold to train the models. Then we use the k-th fold to obtain the out-of-sample error for each candidate model. The best $\hat{\lambda_t}$ minimizes the out-of-sample error.     
+
+
 
 - Describe how the hypothesis is linked to your estimation.
 - Describe the estimation using equations.
