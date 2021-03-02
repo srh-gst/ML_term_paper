@@ -10,7 +10,8 @@ $endif$
  
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
-
+   \usepackage{floatrow}
+   \floatsetup[figure]{capposition=top}
 
 \usepackage{mathtools}
 
@@ -184,6 +185,7 @@ $endif$
 % This should regulate where figures float
 % See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
 \usepackage[section]{placeins}
+
 
 
 \begin{document}
