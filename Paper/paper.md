@@ -143,7 +143,7 @@ $\sum_k |\theta^k|$ is the lasso penalty that shrinks coefficients of little exp
 
 ## Training the Model 
 
-Figure \ref{lasso_logit_onjob} and Figure \ref{lasso_logit_open} present the lasso regularization path for the logistic candidate models. The models are ordered from the most penalized to the least penalized model and the algorithm includes more non-zero coefficients in the model. We select  $\lambda$ by a *5-fold cross calidation* process. This yields an optimal Lasso penalty of 0.23 for on-job training and 1.62 for off-job training.   
+Figure \ref{lasso_logit_onjob} and Figure \ref{lasso_logit_open} present the Lasso regularization path for the logistic candidate models. The models are ordered from the most penalized to the least penalized model and the algorithm includes more non-zero coefficients in the model. We select  $\lambda$ by a *5-fold cross calidation* process. This yields an optimal Lasso penalty of 1.6238 for on-job training and 1.62 for off-job training.   
 
 ![Logistic model: Lasso path for on-job training\label{lasso_logit_onjob}](..\Results\Plots\lasso_logit_on_job.png){ width=50% }
 
@@ -151,9 +151,36 @@ Figure \ref{lasso_logit_onjob} and Figure \ref{lasso_logit_open} present the las
 
 ## Variable Selection
 
-The Lasso logit model indentifies 131 words with nonzero predictive power for on-job training. We present the coefficients in Table \ref{log_reg_onjob}. Let us first turn to the reults for the skill level. *skill_4* are elementary occupations and represent the reference group here. *skill_3* is the dummy variable for semi-skilled blue-collar occupations, *skill_2* is the dummy for semi-skilled white-collar occupations, and *skill_1* is the dummy for skilled occupations. All coefficients are nonzero. The coefficients for semi-skilled blue-collar occupations is equal to 0.17. That is, working in a semi-skilled blue-collar occupations compared to an elementary occupation increases the probability of receiving any on-job training by 17 %. The coefficent for semi-skilled white-collar occupations is lower and equal to 0.063.  For skilled occupations the coefficient is 0.056. Thus,  
+The Lasso logit model indentifies 145 columns^[Including country and industry controls] with non-zero predictive power for on-job training. We present the coefficients in Table \ref{log_reg_onjob}. Let us first turn to the results for the skill level. *skill_4* are elementary occupations and represent the reference group here. *skill_3* is the dummy variable for semi-skilled blue-collar occupations, *skill_2* is the dummy for semi-skilled white-collar occupations, and *skill_1* is the dummy for skilled occupations. Working in a semi-skilled blue-collar occupation increases the probability of receiving training by or white-collar occupation compared to working in an elemetary occupation has no effect on the probability of receiving training. But working in a skilled occupation increases the probability of receiving training by 9.3~% relative to working in an elementary occupation.
 
-## Out-of-Sample Evaluation Results
+The dummy variable for whether a person was employed during studying for a qualification, *b_q10a_Yes*, has the highest positive explanatory power. If a person uses a computer on this specific job (*g_q04_Yes*), it increased the probability of receiving on-job training by 64.23~%. Having general computer experience (*computerexperience_Yes*) increases the probability of receiving on-job training by 43.11~%. People are 25.79~% more likely to participate in on-job training, if they have the feeling that they need more training in order to cope well with their present duties (*f_q07b_Yes*). Moreover, employees are more likely to receive training if they work in larger companies, compared to smaller companies and if they have a higher educational level.
+
+If a job does not involve keeping up to date with new services and products (*d_q13c_Never*), it lowers the probability of reveiving training by 33.37~%. Never participationg in online discussions such as conferences (*g_q05h_Never*) reduces the probability of receiving on-job training by 37.38~%. Also, having a low education level, if a job needs less than one month of prior work experience, and working in a job without a contract have the most negative effects on the chances of participating in on-job training.
+
+For off-job training, the Lasso logit model identifies 138 non-zero columns^[Including country and industry controls] The results look very similar to the on-job training. Working in a skilled occupation increases the probability of participating in open education by 9.14~%. The indicator for semi-skilled white-collar workers is also positive but with a magnitude of 0.0861~% very small. As in on-job training, the most important feature is being employed and using the computer on this specific job (79.04~%) or having general computer experience (63.8~%). Also working in a larger company and having a higher educational level increases the probability of participating in open education. Lower education, having no contract, and never using the computer for work tasks negatively effect the probability of participating in open education. 
+
+## Accuracy of the Model 
+
+Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusion_onjob} presents the confusion matrix for on the job training. 10941 are true negative prediction and there are 85 true positive predictions. The model yields 1203 false negative predictions and 56 false positive predictions. We present the confision matrix for open education in Figure \ref{confusion_open}. For this model, we obtain 10940true negative predictions and 84 true negative predictions. 1204 + 57 are incorrect predictions.      
+
+![Logistic model: Confusion matrix for on-job training\label{confusion_onjob}](..\Results\Plots\confusion_on_job.png){ width=50% }
+
+![Locistic model: Confusion matrix for off-job training\label{confusion_open}](..\Results\Plots\confusion_open_educ.png){ width=50% }
+
+In Table 
+
+Table: Accuracy of the Lasso logistic model
+
+|                     |   Lasso Logistic Model | Logistic Model  |
+|--------------------:|-----------------------:|:----------------|
+|  On-job training                                               |
+|  Training accuracy  |   0.7886               | 0.4987          |
+|  Test accuracy      |   0.7822               | 0.5067          |
+|--------------------:|-----------------------:|:----------------|
+|  Off-job training                                              |
+|  Training accuracy  |   0.7950               | 0.4987          |
+|  Test accuracy      |   0.7892               | 0.5067          |
+
 
 
 
@@ -182,301 +209,205 @@ Which results can be expected? What is new? Where lies the progress for science?
 Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
 
 \footnotesize
-|     |   Coefficients | Feature                                                                               |
-|----:|---------------:|:--------------------------------------------------------------------------------------|
-|   0 |   -0.0141972   | age_r                                                                                 |
-|   1 |    0.0142358   | j_q03b                                                                                |
-|   2 |   -0.000661476 | yrsget                                                                                |
-|   3 |    0.0112553   | c_q09                                                                                 |
-|   4 |    0.00519978  | c_q10a                                                                                |
-|   5 |   -0.00181812  | readytolearn                                                                          |
-|   6 |   -2.75888e-07 | earnmthallppp                                                                         |
-|   7 |   -0.0060683   | g_q07_Yes                                                                             |
-|   8 |    0.153469    | d_q09_An indefinite contract                                                          |
-|   9 |   -0.454806    | d_q09_No contract                                                                     |
-|  10 |    0.0112322   | d_q09_Other                                                                           |
-|  11 |    0.0944897   | g_q05a_Every day                                                                      |
-|  12 |   -0.103928    | g_q05a_Never                                                                          |
-|  13 |   -0.009338    | d_q13c_Every day                                                                      |
-|  14 |   -0.096942    | d_q13c_Less than once a month                                                         |
-|  15 |   -0.0671665   | d_q13c_Less than once a week but at least once a month                                |
-|  16 |   -0.422257    | d_q13c_Never                                                                          |
-|  17 |   -0.11267     | g_q08_Yes                                                                             |
-|  18 |    0.126734    | g_q05h_Less than once a month                                                         |
-|  19 |   -0.173587    | g_q05h_Never                                                                          |
-|  20 |    0.0869204   | b_q10a_Yes                                                                            |
-|  21 |    0.288554    | d_q06a_11 to 50 people                                                                |
-|  22 |    0.585772    | d_q06a_251 to 1000 people                                                             |
-|  23 |    0.490608    | d_q06a_51 to 250 people                                                               |
-|  24 |    0.641563    | d_q06a_More than 1000 people                                                          |
-|  25 |   -0.137498    | isic1c_A                                                                              |
-|  26 |    0.357057    | isic1c_B                                                                              |
-|  27 |   -0.156592    | isic1c_C                                                                              |
-|  28 |    0.105992    | isic1c_D                                                                              |
-|  29 |   -0.174957    | isic1c_F                                                                              |
-|  30 |   -0.14426     | isic1c_G                                                                              |
-|  31 |    0.213439    | isic1c_H                                                                              |
-|  32 |   -0.434805    | isic1c_I                                                                              |
-|  33 |   -0.158933    | isic1c_J                                                                              |
-|  34 |    0.375911    | isic1c_K                                                                              |
-|  35 |   -0.276325    | isic1c_M                                                                              |
-|  36 |    0.15145     | isic1c_P                                                                              |
-|  37 |    0.20598     | isic1c_Q                                                                              |
-|  38 |   -0.00645774  | isic1c_S                                                                              |
-|  39 |   -0.381938    | isic1c_T                                                                              |
-|  40 |   -0.0910761   | g_q05c_Every day                                                                      |
-|  41 |   -0.24627     | g_q05c_Less than once a month                                                         |
-|  42 |    0.0748321   | g_q05c_Less than once a week but at least once a month                                |
-|  43 |    0.0661525   | g_q05f_Every day                                                                      |
-|  44 |   -0.191333    | g_q05f_Less than once a month                                                         |
-|  45 |   -0.121329    | g_q05f_Never                                                                          |
-|  46 |   -0.134179    | cntryid_218.0                                                                         |
-|  47 |   -0.829642    | cntryid_300.0                                                                         |
-|  48 |   -0.0347516   | cntryid_376.0                                                                         |
-|  49 |   -0.61448     | cntryid_398.0                                                                         |
-|  50 |   -0.236664    | cntryid_440.0                                                                         |
-|  51 |   -0.150328    | cntryid_484.0                                                                         |
-|  52 |    0.0578502   | cntryid_218.0                                                                         |
-|  53 |   -0.425251    | cntryid_300.0                                                                         |
-|  54 |   -1.04733     | cntryid_398.0                                                                         |
-|  55 |   -0.0891423   | cntryid_440.0                                                                         |
-|  56 |    0.191407    | cntryid_705.0                                                                         |
-|  57 |   -0.0281003   | cntryid_Belgium                                                                       |
-|  58 |    1.07484     | cntryid_Czech Republic                                                                |
-|  59 |    0.333032    | cntryid_Denmark                                                                       |
-|  60 |   -0.661661    | cntryid_France                                                                        |
-|  61 |    0.468554    | cntryid_Ireland                                                                       |
-|  62 |   -0.860989    | cntryid_Italy                                                                         |
-|  63 |    0.0437291   | cntryid_Japan                                                                         |
-|  64 |    0.617292    | cntryid_Korea                                                                         |
-|  65 |    0.657386    | cntryid_Netherlands                                                                   |
-|  66 |   -0.374       | cntryid_Norway                                                                        |
-|  67 |   -0.0983759   | cntryid_Poland                                                                        |
-|  68 |   -0.507435    | cntryid_Russian Federation                                                            |
-|  69 |   -0.129192    | cntryid_Slovak Republic                                                               |
-|  70 |    0.189526    | cntryid_Spain                                                                         |
-|  71 |    0.574385    | cntryid_United Kingdom                                                                |
-|  72 |    0.122832    | gender_r_Male                                                                         |
-|  73 |   -0.0128679   | pared_At least one parent has attained tertiary                                       |
-|  74 |   -0.0772567   | pared_Neither parent has attained upper secondary                                     |
-|  75 |    0.00628131  | d_q12b_A lower level would be sufficient                                              |
-|  76 |   -0.0366687   | d_q12b_This level is necessary                                                        |
-|  77 |   -0.0194887   | b_q10c_Very useful                                                                    |
-|  78 |   -0.18683     | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24                  |
-|  79 |   -2.43266     | b_q14a_Yes                                                                            |
-|  80 |    0.132303    | f_q07b_Yes                                                                            |
-|  81 |   -0.00655557  | g_q05e_Every day                                                                      |
-|  82 |    0.0316508   | g_q05e_Less than once a month                                                         |
-|  83 |    0.0709008   | g_q05e_Less than once a week but at least once a month                                |
-|  84 |   -0.0343146   | g_q05e_Never                                                                          |
-|  85 |   -0.161526    | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                                    |
-|  86 |   -0.00231736  | edcat8_Primary or less (ISCED 1 or less)                                              |
-|  87 |    0.0651408   | edcat8_Tertiary – bachelor degree (ISCED 5A)                                          |
-|  88 |   -0.0951216   | edcat8_Tertiary – master degree (ISCED 5A)                                            |
-|  89 |    0.169503    | edcat8_Tertiary – professional degree (ISCED 5B)                                      |
-|  90 |   -0.461169    | edcat8_Tertiary – research degree (ISCED 6)                                           |
-|  91 |    0.0406221   | edcat8_Upper secondary (ISCED 3A-B, C long)                                           |
-|  92 |    0.47191     | b_q26a_t_Yes                                                                          |
-|  93 |    0.0473652   | d_q14_Extremely dissatisfied                                                          |
-|  94 |    0.00734626  | d_q14_Extremely satisfied                                                             |
-|  95 |   -0.0450603   | d_q14_Neither satisfied nor dissatisfied                                              |
-|  96 |    0.00769783  | g_q05g_Less than once a week but at least once a month                                |
-|  97 |   -0.250609    | d_q03_The private sector (for example a company)                                      |
-|  98 |   -0.015961    | d_q04_t_Employee, supervising fewer than 5 people                                     |
-|  99 |    0.181613    | d_q04_t_Employee, supervising more than 5 people                                      |
-| 100 |    0.0945043   | g_q06_Moderate                                                                        |
-| 101 |    0.146899    | g_q06_Straightforward                                                                 |
-| 102 |    3.49931     | b_q14b_Other                                                                          |
-| 103 |    3.93199     | b_q14b_To be less likely to lose my job                                               |
-| 104 |    4.09844     | b_q14b_To do my job better and/or improve career prospects                            |
-| 105 |    3.8749      | b_q14b_To increase my knowledge or skills on a subject that interests me              |
-| 106 |    3.57337     | b_q14b_To increase my possibilities of getting a job, or changing a job or profession |
-| 107 |    4.16043     | b_q14b_To obtain a certificate                                                        |
-| 108 |    3.47846     | b_q14b_To start my own business                                                       |
-| 109 |    0.120491    | vet_True                                                                              |
-| 110 |    0.0777629   | b_q01b_Engineering, manufacturing and construction                                    |
-| 111 |   -0.0851857   | b_q01b_General programmes                                                             |
-| 112 |    0.149636    | b_q01b_Health and welfare                                                             |
-| 113 |   -0.0966087   | b_q01b_Humanities, languages and arts                                                 |
-| 114 |   -0.0233597   | b_q01b_Science, mathematics and computing                                             |
-| 115 |   -0.0316738   | b_q01b_Services                                                                       |
-| 116 |    0.168981    | b_q01b_Teacher training and education science                                         |
-| 117 |   -0.0055555   | d_q12c_1 to 6 months                                                                  |
-| 118 |    0.0174142   | d_q12c_3 years or more                                                                |
-| 119 |   -0.00150785  | d_q12c_7 to 11 months                                                                 |
-| 120 |   -0.127243    | d_q12c_Less than 1 month                                                              |
-| 121 |    0.0527821   | d_q12c_None                                                                           |
-| 122 |   -0.166524    | g_q05d_Every day                                                                      |
-| 123 |   -0.0971816   | g_q05d_Less than once a week but at least once a month                                |
-| 124 |    0.0816741   | g_q05d_Never                                                                          |
-| 125 |    0.424704    | g_q04_Yes                                                                             |
-| 126 |   -0.0648053   | d_q06b_Increased                                                                      |
-| 127 |   -0.170789    | d_q06b_Stayed more or less the same                                                   |
-| 128 |   -0.0370546   | f_q07a_Yes                                                                            |
-| 129 |    0.0555898   | skill_1                                                                               |
-| 130 |    0.0631216   | skill_2                                                                               |
-| 131 |    0.172198    | skill_3                                                                               |
+|    |   Coefficients | Feature                                                                      |
+|---:|---------------:|:-----------------------------------------------------------------------------|
+|  0 |   -0.016459    | age_r                                                                        |
+|  1 |    0.0166996   | j_q03b                                                                       |
+|  2 |    0.0205559   | yrsget                                                                       |
+|  3 |    0.00927976  | c_q09                                                                        |
+|  4 |    0.00388655  | c_q10a                                                                       |
+|  5 |    0.0559252   | readytolearn                                                                 |
+|  6 |   -2.07843e-07 | earnmthallppp                                                                |
+|  7 |    0.0831342   | gender_r_Male                                                                |
+|  8 |   -0.0149177   | d_q13c_Every day                                                             |
+|  9 |   -0.178626    | d_q13c_Less than once a month                                                |
+| 10 |   -0.127389    | d_q13c_Less than once a week but at least once a month                       |
+| 11 |   -0.556924    | d_q13c_Never                                                                 |
+| 12 |   -0.0336161   | pared_At least one parent has attained tertiary                              |
+| 13 |   -0.0500042   | pared_Neither parent has attained upper secondary                            |
+| 14 |    0.0547907   | b_q01b_Engineering, manufacturing and construction                           |
+| 15 |   -0.140491    | b_q01b_General programmes                                                    |
+| 16 |    0.186053    | b_q01b_Health and welfare                                                    |
+| 17 |   -0.110284    | b_q01b_Humanities, languages and arts                                        |
+| 18 |    0.0208533   | b_q01b_Science, mathematics and computing                                    |
+| 19 |   -0.138746    | b_q01b_Services                                                              |
+| 20 |   -0.00921516  | b_q01b_Social sciences, business and law                                     |
+| 21 |    0.157079    | b_q01b_Teacher training and education science                                |
+| 22 |   -0.539921    | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24         |
+| 23 |    0.62975     | g_q04_Yes                                                                    |
+| 24 |   -0.343033    | d_q03_The private sector (for example a company)                             |
+| 25 |   -0.0724431   | d_q03_The public sector (for example the local government or a state school) |
+| 26 |   -0.0535022   | g_q05e_Every day                                                             |
+| 27 |    0.0610249   | g_q05e_Less than once a month                                                |
+| 28 |    0.0544428   | g_q05e_Less than once a week but at least once a month                       |
+| 29 |   -0.0425196   | g_q05e_Never                                                                 |
+| 30 |    0.0986375   | d_q04_t_Employee, supervising fewer than 5 people                            |
+| 31 |    0.248781    | d_q04_t_Employee, supervising more than 5 people                             |
+| 32 |    0.00296429  | d_q09_A temporary employment agency contract                                 |
+| 33 |    0.0628857   | d_q09_An apprenticeship or other training scheme                             |
+| 34 |    0.132835    | d_q09_An indefinite contract                                                 |
+| 35 |   -0.521933    | d_q09_No contract                                                            |
+| 36 |    0.0733041   | d_q09_Other                                                                  |
+| 37 |    0.0829767   | g_q05a_Every day                                                             |
+| 38 |   -0.0931355   | g_q05a_Less than once a month                                                |
+| 39 |    0.0578459   | g_q05a_Less than once a week but at least once a month                       |
+| 40 |   -0.126261    | g_q05a_Never                                                                 |
+| 41 |    0.0901094   | vet_True                                                                     |
+| 42 |   -0.182817    | g_q08_Yes                                                                    |
+| 43 |    0.129847    | b_q10a_Yes                                                                   |
+| 44 |    0.0124907   | j_q04a_Yes                                                                   |
+| 45 |    0.0453981   | d_q14_Extremely dissatisfied                                                 |
+| 46 |    0.148551    | d_q14_Extremely satisfied                                                    |
+| 47 |    0.112871    | d_q14_Satisfied                                                              |
+| 48 |   -0.156307    | g_q05g_Every day                                                             |
+| 49 |    0.0270132   | g_q05g_Less than once a month                                                |
+| 50 |    0.00192066  | g_q05g_Never                                                                 |
+| 51 |    0.12231     | computerexperience_Yes                                                       |
+| 52 |    0.321902    | f_q07b_Yes                                                                   |
+| 53 |   -0.10849     | g_q05d_Every day                                                             |
+| 54 |   -0.0590609   | g_q05d_Less than once a week but at least once a month                       |
+| 55 |    0.0951881   | g_q05d_Never                                                                 |
+| 56 |   -0.161068    | d_q06b_Stayed more or less the same                                          |
+| 57 |    0.0578826   | g_q06_Moderate                                                               |
+| 58 |    0.0576696   | g_q06_Straightforward                                                        |
+| 59 |   -0.0708934   | d_q12b_A lower level would be sufficient                                     |
+| 60 |   -0.0614321   | d_q12b_This level is necessary                                               |
+| 61 |    0.368032    | d_q06a_11 to 50 people                                                       |
+| 62 |    0.703443    | d_q06a_251 to 1000 people                                                    |
+| 63 |    0.589748    | d_q06a_51 to 250 people                                                      |
+| 64 |    0.693836    | d_q06a_More than 1000 people                                                 |
+| 65 |   -0.0191549   | g_q05c_Every day                                                             |
+| 66 |   -0.161512    | g_q05c_Less than once a month                                                |
+| 67 |    0.0592944   | g_q05c_Less than once a week but at least once a month                       |
+| 68 |   -0.0453372   | g_q05c_Never                                                                 |
+| 69 |   -0.00461924  | f_q07a_Yes                                                                   |
+| 70 |   -0.0420853   | g_q05h_Every day                                                             |
+| 71 |    0.0849324   | g_q05h_Less than once a month                                                |
+| 72 |   -0.213333    | g_q05h_Never                                                                 |
+| 73 |   -0.402679    | b_q10c_Not useful at all                                                     |
+| 74 |   -0.0579116   | b_q10c_Somewhat useful                                                       |
+| 75 |   -0.0328139   | b_q10c_Very useful                                                           |
+| 76 |   -0.0897247   | d_q12c_1 to 6 months                                                         |
+| 77 |    0.00245779  | d_q12c_3 years or more                                                       |
+| 78 |   -0.066277    | d_q12c_7 to 11 months                                                        |
+| 79 |   -0.221253    | d_q12c_Less than 1 month                                                     |
+| 80 |   -0.0371234   | d_q12c_None                                                                  |
+| 81 |    0.110397    | g_q05f_Every day                                                             |
+| 82 |   -0.0965286   | g_q05f_Less than once a month                                                |
+| 83 |    0.00459112  | g_q05f_Less than once a week but at least once a month                       |
+| 84 |   -0.0468762   | g_q05f_Never                                                                 |
+| 85 |   -0.0214164   | g_q07_Yes                                                                    |
+| 86 |   -0.0550972   | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                           |
+| 87 |   -0.128319    | edcat8_Primary or less (ISCED 1 or less)                                     |
+| 88 |   -0.105555    | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)               |
+| 89 |    0.0686286   | edcat8_Tertiary – bachelor degree (ISCED 5A)                                 |
+| 90 |   -0.0615816   | edcat8_Tertiary – master degree (ISCED 5A)                                   |
+| 91 |    0.128934    | edcat8_Tertiary – professional degree (ISCED 5B)                             |
+| 92 |   -0.655697    | edcat8_Tertiary – research degree (ISCED 6)                                  |
+| 93 |    0.0204709   | edcat8_Upper secondary (ISCED 3A-B, C long)                                  |
+| 94 |    0.193856    | skill_1                                                                      |
+| 95 |    0.123581    | skill_2                                                                      |
+| 96 |    0.254882    | skill_3                                                                      |
 
 \normalsize
 
 Table: Lasso logistic regression for off-job training \label{log_reg_open}
 
 \footnotesize
-|     |   Coefficients | Feature                                                                               |
-|----:|---------------:|:--------------------------------------------------------------------------------------|
-|   0 |   -0.0134318   | age_r                                                                                 |
-|   1 |   -0.00793444  | j_q03b                                                                                |
-|   2 |    0.0188773   | yrsget                                                                                |
-|   3 |    0.0122814   | c_q09                                                                                 |
-|   4 |    0.000457247 | c_q10a                                                                                |
-|   5 |    0.0541885   | readytolearn                                                                          |
-|   6 |    6.40219e-09 | earnmthallppp                                                                         |
-|   7 |    0.177043    | g_q07_Yes                                                                             |
-|   8 |    0.149206    | d_q09_A temporary employment agency contract                                          |
-|   9 |   -0.0939051   | d_q09_An apprenticeship or other training scheme                                      |
-|  10 |    0.0103396   | d_q09_An indefinite contract                                                          |
-|  11 |   -0.0909423   | d_q09_No contract                                                                     |
-|  12 |    0.260859    | d_q09_Other                                                                           |
-|  13 |    0.0379812   | g_q05a_Every day                                                                      |
-|  14 |    0.147427    | g_q05a_Less than once a week but at least once a month                                |
-|  15 |    0.00179648  | g_q05a_Never                                                                          |
-|  16 |    0.0306883   | d_q13c_Every day                                                                      |
-|  17 |   -0.0891336   | d_q13c_Less than once a month                                                         |
-|  18 |   -0.12513     | d_q13c_Less than once a week but at least once a month                                |
-|  19 |   -0.256723    | d_q13c_Never                                                                          |
-|  20 |   -0.137872    | g_q08_Yes                                                                             |
-|  21 |    0.0175554   | g_q05h_Every day                                                                      |
-|  22 |   -0.0401979   | g_q05h_Less than once a month                                                         |
-|  23 |   -0.0782347   | g_q05h_Less than once a week but at least once a month                                |
-|  24 |   -0.323316    | g_q05h_Never                                                                          |
-|  25 |    0.721732    | b_q10a_Yes                                                                            |
-|  26 |    0.0970483   | d_q06a_11 to 50 people                                                                |
-|  27 |    0.215533    | d_q06a_251 to 1000 people                                                             |
-|  28 |    0.178385    | d_q06a_51 to 250 people                                                               |
-|  29 |    0.242926    | d_q06a_More than 1000 people                                                          |
-|  30 |   -0.352446    | isic1c_A                                                                              |
-|  31 |    0.165571    | isic1c_B                                                                              |
-|  32 |   -0.181055    | isic1c_C                                                                              |
-|  33 |    0.254614    | isic1c_D                                                                              |
-|  34 |    0.141058    | isic1c_E                                                                              |
-|  35 |   -0.168568    | isic1c_F                                                                              |
-|  36 |    0.0277366   | isic1c_G                                                                              |
-|  37 |    0.0381906   | isic1c_H                                                                              |
-|  38 |   -0.106975    | isic1c_I                                                                              |
-|  39 |    0.0391378   | isic1c_J                                                                              |
-|  40 |    0.387801    | isic1c_K                                                                              |
-|  41 |    0.111583    | isic1c_L                                                                              |
-|  42 |   -0.346841    | isic1c_M                                                                              |
-|  43 |    0.0992696   | isic1c_N                                                                              |
-|  44 |    0.0414967   | isic1c_O                                                                              |
-|  45 |    0.211418    | isic1c_P                                                                              |
-|  46 |    0.017236    | isic1c_Q                                                                              |
-|  47 |   -0.0455511   | isic1c_R                                                                              |
-|  48 |   -0.277199    | isic1c_S                                                                              |
-|  49 |   -0.109209    | isic1c_T                                                                              |
-|  50 |    0.274715    | isic1c_U                                                                              |
-|  51 |    0.0479809   | g_q05c_Every day                                                                      |
-|  52 |   -0.0625536   | g_q05c_Less than once a month                                                         |
-|  53 |   -0.0940339   | g_q05c_Less than once a week but at least once a month                                |
-|  54 |   -0.162329    | g_q05c_Never                                                                          |
-|  55 |    0.0603814   | g_q05f_Every day                                                                      |
-|  56 |    0.0186714   | g_q05f_Less than once a month                                                         |
-|  57 |   -0.0784906   | g_q05f_Less than once a week but at least once a month                                |
-|  58 |   -0.143191    | cntryid_218.0                                                                         |
-|  59 |   -1.80903     | cntryid_300.0                                                                         |
-|  60 |   -0.626979    | cntryid_376.0                                                                         |
-|  61 |    0.0767087   | cntryid_398.0                                                                         |
-|  62 |    0.851111    | cntryid_440.0                                                                         |
-|  63 |   -0.0737347   | cntryid_484.0                                                                         |
-|  64 |    0.274422    | cntryid_152.0                                                                         |
-|  65 |    0.0747696   | cntryid_218.0                                                                         |
-|  66 |   -0.417076    | cntryid_300.0                                                                         |
-|  67 |   -0.220985    | cntryid_376.0                                                                         |
-|  68 |   -0.332184    | cntryid_398.0                                                                         |
-|  69 |    0.843111    | cntryid_440.0                                                                         |
-|  70 |   -0.0645607   | cntryid_484.0                                                                         |
-|  71 |   -1.26758     | cntryid_705.0                                                                         |
-|  72 |   -1.03884     | cntryid_Belgium                                                                       |
-|  73 |   -0.957643    | cntryid_Czech Republic                                                                |
-|  74 |   -0.397515    | cntryid_Denmark                                                                       |
-|  75 |   -1.60505     | cntryid_France                                                                        |
-|  76 |   -1.33687     | cntryid_Ireland                                                                       |
-|  77 |   -0.323038    | cntryid_Italy                                                                         |
-|  78 |   -0.506968    | cntryid_Japan                                                                         |
-|  79 |    1.03183     | cntryid_Korea                                                                         |
-|  80 |   -0.0971461   | cntryid_Netherlands                                                                   |
-|  81 |   -1.66399     | cntryid_Norway                                                                        |
-|  82 |    0.773827    | cntryid_Poland                                                                        |
-|  83 |   -0.139928    | cntryid_Russian Federation                                                            |
-|  84 |   -1.31597     | cntryid_Slovak Republic                                                               |
-|  85 |    0.425831    | cntryid_Spain                                                                         |
-|  86 |   -0.888405    | cntryid_United Kingdom                                                                |
-|  87 |   -0.190223    | j_q04a_Yes                                                                            |
-|  88 |   -0.0447      | gender_r_Male                                                                         |
-|  89 |   -0.11241     | pared_At least one parent has attained tertiary                                       |
-|  90 |   -0.039335    | pared_Neither parent has attained upper secondary                                     |
-|  91 |   -0.0808025   | d_q12b_A lower level would be sufficient                                              |
-|  92 |   -0.158813    | d_q12b_This level is necessary                                                        |
-|  93 |    0.355935    | b_q10c_Somewhat useful                                                                |
-|  94 |   -0.0315921   | b_q10c_Very useful                                                                    |
-|  95 |   -0.541456    | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24                  |
-|  96 |    0.958175    | b_q14a_Yes                                                                            |
-|  97 |    0.131533    | f_q07b_Yes                                                                            |
-|  98 |    0.125695    | g_q05e_Every day                                                                      |
-|  99 |    0.0840193   | g_q05e_Less than once a month                                                         |
-| 100 |    0.0749374   | g_q05e_Less than once a week but at least once a month                                |
-| 101 |    0.11463     | g_q05e_Never                                                                          |
-| 102 |    0.267044    | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                                    |
-| 103 |   -0.0983834   | edcat8_Primary or less (ISCED 1 or less)                                              |
-| 104 |    0.0782849   | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)                        |
-| 105 |    0.259089    | edcat8_Tertiary – bachelor degree (ISCED 5A)                                          |
-| 106 |    0.184096    | edcat8_Tertiary – master degree (ISCED 5A)                                            |
-| 107 |    0.119397    | edcat8_Tertiary – professional degree (ISCED 5B)                                      |
-| 108 |   -0.256567    | edcat8_Tertiary – research degree (ISCED 6)                                           |
-| 109 |    0.0858208   | edcat8_Upper secondary (ISCED 3A-B, C long)                                           |
-| 110 |    0.295653    | b_q26a_t_Yes                                                                          |
-| 111 |   -0.20226     | d_q14_Extremely dissatisfied                                                          |
-| 112 |   -0.0202635   | d_q14_Extremely satisfied                                                             |
-| 113 |   -0.088988    | d_q14_Neither satisfied nor dissatisfied                                              |
-| 114 |   -0.0775716   | d_q14_Satisfied                                                                       |
-| 115 |   -0.0198438   | g_q05g_Every day                                                                      |
-| 116 |    0.14809     | g_q05g_Less than once a month                                                         |
-| 117 |    0.166102    | g_q05g_Less than once a week but at least once a month                                |
-| 118 |   -0.0147709   | g_q05g_Never                                                                          |
-| 119 |   -0.13778     | d_q03_The private sector (for example a company)                                      |
-| 120 |    0.0323726   | d_q04_t_Employee, supervising more than 5 people                                      |
-| 121 |    0.0596865   | g_q06_Moderate                                                                        |
-| 122 |    1.02678     | b_q14b_Other                                                                          |
-| 123 |    1.07695     | b_q14b_To be less likely to lose my job                                               |
-| 124 |    1.15018     | b_q14b_To do my job better and/or improve career prospects                            |
-| 125 |    1.04051     | b_q14b_To increase my knowledge or skills on a subject that interests me              |
-| 126 |    1.63777     | b_q14b_To increase my possibilities of getting a job, or changing a job or profession |
-| 127 |    1.6722      | b_q14b_To obtain a certificate                                                        |
-| 128 |    1.29948     | b_q14b_To start my own business                                                       |
-| 129 |   -0.00714804  | vet_True                                                                              |
-| 130 |   -0.00876664  | b_q01b_Engineering, manufacturing and construction                                    |
-| 131 |   -0.0890238   | b_q01b_General programmes                                                             |
-| 132 |    0.108674    | b_q01b_Health and welfare                                                             |
-| 133 |   -0.0865545   | b_q01b_Humanities, languages and arts                                                 |
-| 134 |    0.0430168   | b_q01b_Science, mathematics and computing                                             |
-| 135 |    0.00634779  | b_q01b_Social sciences, business and law                                              |
-| 136 |    0.0556589   | b_q01b_Teacher training and education science                                         |
-| 137 |    0.0106996   | d_q12c_1 to 6 months                                                                  |
-| 138 |   -0.0562169   | d_q12c_3 years or more                                                                |
-| 139 |   -0.055038    | d_q12c_7 to 11 months                                                                 |
-| 140 |   -0.215726    | d_q12c_Less than 1 month                                                              |
-| 141 |    0.119527    | d_q12c_None                                                                           |
-| 142 |    0.126311    | g_q05d_Every day                                                                      |
-| 143 |   -0.147083    | g_q05d_Less than once a month                                                         |
-| 144 |    0.0695134   | g_q05d_Less than once a week but at least once a month                                |
-| 145 |    0.043234    | g_q05d_Never                                                                          |
-| 146 |    0.330605    | g_q04_Yes                                                                             |
-| 147 |    0.022516    | d_q06b_Stayed more or less the same                                                   |
-| 148 |    0.0393714   | f_q07a_Yes                                                                            |
-| 149 |    0.322029    | computerexperience_Yes                                                                |
-| 150 |    0.00969342  | skill_1                                                                               |
-| 151 |    0.0132645   | skill_2                                                                               |
-| 152 |   -0.032086    | skill_3                                                                               |
+|    |   Coefficients | Feature                                                              |
+|---:|---------------:|:---------------------------------------------------------------------|
+|  0 |   -0.0129761   | age_r                                                                |
+|  1 |    0.00472379  | j_q03b                                                               |
+|  2 |    0.0450784   | yrsget                                                               |
+|  3 |    0.0114224   | c_q09                                                                |
+|  4 |    0.00774523  | c_q10a                                                               |
+|  5 |    0.080179    | readytolearn                                                         |
+|  6 |   -4.92742e-08 | earnmthallppp                                                        |
+|  7 |    0.133852    | g_q05e_Every day                                                     |
+|  8 |    0.0622688   | g_q05e_Less than once a month                                        |
+|  9 |    0.0853484   | g_q05e_Less than once a week but at least once a month               |
+| 10 |    0.12126     | g_q05e_Never                                                         |
+| 11 |    0.275416    | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                   |
+| 12 |   -0.0969094   | edcat8_Primary or less (ISCED 1 or less)                             |
+| 13 |    0.278165    | edcat8_Tertiary – bachelor degree (ISCED 5A)                         |
+| 14 |    0.217442    | edcat8_Tertiary – master degree (ISCED 5A)                           |
+| 15 |    0.107415    | edcat8_Tertiary – professional degree (ISCED 5B)                     |
+| 16 |   -0.237701    | edcat8_Tertiary – research degree (ISCED 6)                          |
+| 17 |    0.0375319   | edcat8_Upper secondary (ISCED 3A-B, C long)                          |
+| 18 |   -0.0351465   | gender_r_Male                                                        |
+| 19 |   -0.147956    | g_q08_Yes                                                            |
+| 20 |   -0.0917169   | j_q04a_Yes                                                           |
+| 21 |    0.0454495   | g_q05a_Every day                                                     |
+| 22 |   -0.0569056   | g_q05a_Less than once a month                                        |
+| 23 |    0.0827699   | g_q05a_Less than once a week but at least once a month               |
+| 24 |   -0.0152595   | g_q05a_Never                                                         |
+| 25 |    0.102236    | g_q05f_Every day                                                     |
+| 26 |   -0.0766345   | g_q05f_Less than once a week but at least once a month               |
+| 27 |   -0.0269112   | g_q05f_Never                                                         |
+| 28 |    0.447649    | computerexperience_Yes                                               |
+| 29 |    0.260128    | f_q07b_Yes                                                           |
+| 30 |    0.0246258   | b_q01b_Engineering, manufacturing and construction                   |
+| 31 |   -0.0336862   | b_q01b_General programmes                                            |
+| 32 |    0.222118    | b_q01b_Health and welfare                                            |
+| 33 |   -0.0330549   | b_q01b_Humanities, languages and arts                                |
+| 34 |    0.0886899   | b_q01b_Science, mathematics and computing                            |
+| 35 |    0.0228378   | b_q01b_Social sciences, business and law                             |
+| 36 |    0.127195    | b_q01b_Teacher training and education science                        |
+| 37 |    0.156951    | d_q09_A temporary employment agency contract                         |
+| 38 |    0.0109747   | d_q09_An indefinite contract                                         |
+| 39 |   -0.239307    | d_q09_No contract                                                    |
+| 40 |    0.225348    | d_q09_Other                                                          |
+| 41 |    0.790455    | b_q10a_Yes                                                           |
+| 42 |   -0.290733    | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24 |
+| 43 |   -0.011474    | d_q12c_1 to 6 months                                                 |
+| 44 |   -0.00826411  | d_q12c_3 years or more                                               |
+| 45 |   -0.114519    | d_q12c_7 to 11 months                                                |
+| 46 |   -0.233354    | d_q12c_Less than 1 month                                             |
+| 47 |    0.0759839   | d_q12c_None                                                          |
+| 48 |    0.0204918   | d_q13c_Every day                                                     |
+| 49 |   -0.106941    | d_q13c_Less than once a month                                        |
+| 50 |   -0.135916    | d_q13c_Less than once a week but at least once a month               |
+| 51 |   -0.328951    | d_q13c_Never                                                         |
+| 52 |    0.638       | g_q04_Yes                                                            |
+| 53 |   -0.106537    | g_q05g_Every day                                                     |
+| 54 |    0.0573156   | g_q05g_Less than once a month                                        |
+| 55 |    0.0182027   | g_q05g_Less than once a week but at least once a month               |
+| 56 |   -0.0842075   | g_q05g_Never                                                         |
+| 57 |   -0.101545    | pared_At least one parent has attained tertiary                      |
+| 58 |   -0.0464013   | pared_Neither parent has attained upper secondary                    |
+| 59 |    0.110924    | d_q06a_11 to 50 people                                               |
+| 60 |    0.278621    | d_q06a_251 to 1000 people                                            |
+| 61 |    0.220498    | d_q06a_51 to 250 people                                              |
+| 62 |    0.293571    | d_q06a_More than 1000 people                                         |
+| 63 |    0.155299    | g_q07_Yes                                                            |
+| 64 |    0.0832232   | g_q05d_Every day                                                     |
+| 65 |   -0.105838    | g_q05d_Less than once a month                                        |
+| 66 |    0.070324    | g_q05d_Less than once a week but at least once a month               |
+| 67 |    0.0703497   | d_q06b_Increased                                                     |
+| 68 |    0.0796499   | g_q05c_Every day                                                     |
+| 69 |   -0.098999    | g_q05c_Less than once a month                                        |
+| 70 |   -0.0739767   | g_q05c_Less than once a week but at least once a month               |
+| 71 |   -0.22972     | g_q05c_Never                                                         |
+| 72 |   -0.149715    | d_q14_Extremely dissatisfied                                         |
+| 73 |    0.0511862   | d_q14_Extremely satisfied                                            |
+| 74 |   -0.0127105   | d_q14_Neither satisfied nor dissatisfied                             |
+| 75 |    0.00549697  | vet_True                                                             |
+| 76 |    0.010915    | g_q05h_Every day                                                     |
+| 77 |    0.00103673  | g_q05h_Less than once a month                                        |
+| 78 |   -0.0284805   | g_q05h_Less than once a week but at least once a month               |
+| 79 |   -0.372728    | g_q05h_Never                                                         |
+| 80 |   -0.162708    | d_q03_The private sector (for example a company)                     |
+| 81 |    0.0537657   | g_q06_Moderate                                                       |
+| 82 |   -0.0106992   | g_q06_Straightforward                                                |
+| 83 |   -0.0561683   | b_q10c_Not useful at all                                             |
+| 84 |    0.404797    | b_q10c_Somewhat useful                                               |
+| 85 |    0.0754157   | d_q04_t_Employee, supervising fewer than 5 people                    |
+| 86 |    0.105143    | d_q04_t_Employee, supervising more than 5 people                     |
+| 87 |   -0.119443    | d_q12b_A lower level would be sufficient                             |
+| 88 |   -0.170284    | d_q12b_This level is necessary                                       |
+| 89 |    0.114312    | f_q07a_Yes                                                           |
+| 90 |    0.0914148   | skill_1                                                              |
+| 91 |    0.000861359 | skill_2                                                              |
 
 \normalsize
 
