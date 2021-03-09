@@ -54,25 +54,104 @@ Applying a machine learning approach permits us to take a broader approach on th
 To explore these questions we use the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in their personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving. Furthermore, the study also provides comprehensive background information on the respondents' past and current education, subjective assessments of their skills and job requirements as well as information on migration (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
 The study was conducted in cycles and the first cycle consisted of three rounds which began in 2011/12. In the first round 24 countries took part. In the second round nine additional countries participated and in the last round individuals from five different countries were questioned. In total 40 countries participated in the first cycle comprising about 5,000 randomly selected adults who were between 16 and 65 years old. The second cycle started in 2018 and results are to be expected in 2022 (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
 
-For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the 'research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization'. To answer this, the original PIAAC dataset is reduced to 52 variables in total. For example, information on the various test results conducted in the study are excluded as well as variables with no or very few observations. Additionally, columns that contain infor To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded. 
+For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the 'research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization'. To answer this, the original PIAAC dataset is reduced to 52 variables in total. For example, information on the various test results conducted in the study are excluded as well as variables with no or very few observations. Additionally, columns that contain information on the past job because these questions are answered by respondents who are currently unemployed. However, we are interested in those who are currently employed to estimate the training probability.
+To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded. 
 The final dataset is cross-sectional with one observation representing the answers of one respondent. 
 
-The 128 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income.
+The 52 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income. Since there are many categorical variables in the dataset, we created dummies for the different categories, yielding a total sum of variables of 161.
+
 As we do not restrict the dataset in terms of respondents but only in terms of questions answered, our final dataset comprises 230,691 observations of individuals.
-Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{hist_gender}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{hist_age}).  
-The classification of the respondents jobs in terms of skills is also evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Fiugre \ref{box_age_job}).  
+Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{fig:age_gender_distr}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{fig:age_gender_distr}).
+The number of respondents working in skilled white-collar occupations is the highest with 73,090 respondents. 53,756 respondents work in semi-skilled white-collar occupations and 38,238 are working in semi-skilled blue-collar occupations. Occupations classified as elementary amount to 19,363 respondents (see Figure \ref{fig:JobClass_distr}).
+
+The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training and distance or open training courses. 
+The classification of the respondents jobs in terms of skills is evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Figure \ref{fig:JobClass_age}). Looking at the distribution of on-job trainings and occupational classification alone shows that occupations classified as skilled or semi-skilled white-collar occupations received slightly more trainings in the last year than blue-collar occupations (see figure \ref{fig:JobClass_training}). On average individuals working in skilled white-collar occupations participated in 3.6 on-job trainings and while individuals in semi-skilled white-collar occupations participated in approximately 3 on-job trainings on average. Individuals working in elementary occupations received the least on-job trainings with on average 2.58 trainings in the last year (see Table \ref{tab:mean_onJob_Class}). The distribution of the off-job trainings among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{fig:JobClass_training}). The average number of off-job trainings for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). 
+The skeweness in the distribution of both off- and on-job trainings towards skilled white-collar occupations could be correlated with the fact that we observe more individuals in skilled white-collar occupations. 
+ 
+A simple OLS regressions using only a few selected variables reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training and distance or open educational training.
+However, as we have a dataset that provides many different information on the individuals, we want to be able to include as many variables and thus information as possible in the regressions. In the next chapter we therefore explain the Lasso regression.
 
 
-The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training, seminars or workshops, distance or open training courses as well as private lessons. 
-The simple OLS regressions reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training, seminars or workshops, distance or open educational training as well as for private lessons. However, for semi-skilled jobs, the picture is slightly different. Here, the number of seminars or workshops and private lessons are positively correlated with the semi-skilled occupations. 
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Gender distribution}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Age distribution}
+\end{subfigure}
+\caption{Distribution of age and gender}
+\label{fig:age_gender_distr}
+\end{figure}
+![](..\Results\Plots\barplot_gender.png){ width=50% } 
+![](..\Results\Plots\hist_age.png){ width=50% }
+\vspace{0.5cm}
 
-![Distribution of Gender\label{hist_gender}](..\Results\Plots\barplot_gender.png){ width=50% }
 
-![Distribution of Age\label{hist_age}](..\Results\Plots\hist_age.png){ width=50% }
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Classification of jobs}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Age and Classification of jobs}
+\end{subfigure}
+\caption{Distribution of occupational classifications}
+\label{fig:JobClass_distr}
+\end{figure}
+![](..\Results\Plots\barplot_job_classification.png){ width=50% }
+![](..\Results\Plots\box_age_job_classification.png){ width=50% }
+\vspace{0.5cm}
 
-![Age and Classification of jobs\label{box_age_job}](..\Results\Plots\box_age_job_classification.png){ width=50% }
 
 
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Classification of jobs and trainings}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{On-job trainings and classification of jobs}
+\end{subfigure}
+\caption{Off-job trainings and classification of jobs}
+\label{fig:JobClass_training}
+\end{figure}
+![](..\Results\Plots\box_OntheJob_classification.png){ width=50% }
+![](..\Results\Plots\box_OpenJob_classification.png){ width=50% }
+\vspace{0.5cm}
+
+
+
+Table: Average number of on-job trainings per job classification \label{tab:mean_onJob_Class}
+
+| Job classification   |  Mean number of on-job trainings |
+|:---------------------|---------------------------------:|
+| 1                    |                          3.66353 |
+| 2                    |                          2.95611 |
+| 3                    |                          2.586   |
+| 4                    |                          2.45609 |
+| A                    |                          2.58834 |
+| N                    |                          3.61111 |
+| U                    |                          3.28139 |
+
+
+
+Table: Average number of off-job trainings per job classification \label{tab:mean_offJob_Class}
+
+| Job classification   |   Mean number of off-job trainings |
+|:---------------------|-----------------------------------:|
+| 1                    |                            2.84033 |
+| 2                    |                            2.21544 |
+| 3                    |                            2.22948 |
+| 4                    |                            1.7525  |
+| A                    |                            1.99916 |
+| N                    |                            3.16867 |
+| U                    |                            2.21875 |
+ 
+ 
 # Lasso Linear Model
 
 We start with a simple linear regression model $y = X \beta + \varepsilon$, where $y \in \mathbb{R}^N$ is the predicted participation in on-job or off-job training,  $X \in \mathbb{R}^{N \times k}$ are the vectors of covariates, and $\varepsilon \in \mathbb{R}^N$ is the residual with the standard assumptions of OLS. To select the set of covariates with the strongest predictive power from our set of ... variables, we apply the Least absolute shrinkage and selection operator (Lasso) that was first proposed by @tibshirani1996regression. We add the Lasso penalty equal to $\sum_k |\beta_k|$ to our linear model. The Lasso linear estimator $\hat{\beta}$ is then given by
