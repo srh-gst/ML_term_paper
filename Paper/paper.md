@@ -61,13 +61,13 @@ What is the crucial literature about the topic? What are the open research quest
 
 # Data and Desriptive Statistics
 
-To explore these questions we use the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in their personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving while also comprising comprehensive background information on the respondents past and current education, subjective assessments of their skills and job requirements as well as information on migration (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
-The first cycle consisted of three rounds and began in 2011/12. In the first round 24 countries took part. In the second round nine additional countries participated and in the last round individuals from five different countries were questioned. In total 40 countries participated in the first cycle comprising about 5,000 randomly selected adults who were between 16 and 65 years old. The second cycle started in 2018 and results are to be expected in 2022 (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
+To explore these questions we use the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in their personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving. Furthermore, the study also provides comprehensive background information on the respondents' past and current education, subjective assessments of their skills and job requirements as well as information on migration (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
+The study was conducted in cycles and the first cycle consisted of three rounds which began in 2011/12. In the first round 24 countries took part. In the second round nine additional countries participated and in the last round individuals from five different countries were questioned. In total 40 countries participated in the first cycle comprising about 5,000 randomly selected adults who were between 16 and 65 years old. The second cycle started in 2018 and results are to be expected in 2022 (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
 
-For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the 'research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization'. To answer this, the original PIAAC dataset is reduced to 130 variables in total, including indices. For example, information on the various test results conducted in the study are excluded. To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded. 
+For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the 'research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization'. To answer this, the original PIAAC dataset is reduced to 52 variables in total. For example, information on the various test results conducted in the study are excluded as well as variables with no or very few observations. Additionally, columns that contain infor To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded. 
 The final dataset is cross-sectional with one observation representing the answers of one respondent. 
 
-The 130 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income.
+The 128 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income.
 As we do not restrict the dataset in terms of respondents but only in terms of questions answered, our final dataset comprises 230,691 observations of individuals.
 Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{hist_gender}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{hist_age}).  
 The classification of the respondents jobs in terms of skills is also evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Fiugre \ref{box_age_job}).  
@@ -102,22 +102,53 @@ That is, we minimize the sum of squared residuals but the Lasso penalty puts a c
 
 ## Training the Model 
 
-Figure \ref{lasso_onjob} and Figure \ref{lasso_open} show the lasso regularization path of candidate models $\hat{\beta}_1$ ... $\hat{\beta}_t$ that we obtained by minimizing Equation @eq:lasso over a sequence of tuning parameters $\lambda_1 < \lambda_2 < ... < \lambda_T$ with on-job training and off-job training as dependen variable respectively. The vertical axis contains different levels of $\hat{\beta}$. The horizontal axis contains different levels for $\lambda$. Each vertical section along the horizontal axis, represents one candidate model. Moving from higher to lower $\lambda$, the algorithm includes more nonzero $\hat{\beta}_k$ and becomes more complex. To find the optimal value for $\lambda$ we use *5-fold cross validation*. We split the data in 5 random evenly sized subset and derive the lasso paths $\hat{\beta}_1^k$ ... $\hat{\beta}_T^k$ on each of the folds but one fold to train the models. Then we use the left out fold to obtain the out-of-sample error for each candidate model. The best $\hat{\lambda}_t$ minimizes the out-of-sample error.     
+Figure \ref{lasso_onjob} and Figure \ref{lasso_open} show the lasso regularization path of candidate models $\hat{\beta}_1$ ... $\hat{\beta}_t$ that we obtained by minimizing Equation @eq:lasso over a sequence of tuning parameters $\lambda_1 < \lambda_2 < ... < \lambda_T$ with on-job training and off-job training as dependent variable respectively. The vertical axis contains different levels of $\hat{\beta}$. The horizontal axis contains different levels for $\lambda$. Each vertical section along the horizontal axis, represents one candidate model. Moving from higher to lower $\lambda$, the algorithm includes more nonzero $\hat{\beta}_k$ and the model becomes more complex. To find the optimal value for $\lambda$ we use *5-fold cross validation*. We split the data in five random, evenly sized subsets and derive the lasso paths $\hat{\beta}_1^k$ ... $\hat{\beta}_T^k$ on each of the folds but the last fold to train the models. Then we use the left out fold to obtain the out-of-sample error for each candidate model. The $\hat{\lambda}_t$ that minimizes the out-of-sample error is selected as the optimal $\hat{\lambda}_t$.     
 
 ![Lasso path for on-job training\label{lasso_onjob}](..\Results\Plots\lasso_path_onJob.png){ width=50% }
 
 ![Lasso path for off-job training\label{lasso_open}](..\Results\Plots\lasso_path_openeduc.png){ width=50% }
 
+If we use as the dependent variable on-job training, we obtain the optimal $\lambda = 0.0032$. For off-job training we obtain the same optimal $\lambda = 0.0032$.
 
-describe optmal $\lambda$ and p* here 
 
 ## Variable Selection
 
-present most important variables here
+When estimating the linear model using the optimal Lasso parameter for the number of on-job trainings a person as participated in in the past year, the Lasso regularization identifies 13 columns with zero predictive power. Thus, 148 columns^[Including country and industry controls]  out of the 161 remain in the model with non-zero predictive power. The coefficients are presented in Table \ref{lin_reg_onjob}.
+Included in these 148 columns are the coefficients for dummies of the four different skill levels. The reference group is *skill_4* which captures elementary occupations. Semi-skilled blue-collar occupations are represented by the dummy *skill_3*, semi-skilled white-collar occupations by the dummy *skill_2*, and skilled occupations are represented by the dummy *skill_1*. 
+Individuals working in high-skilled jobs have on average 0.25 trainings less compared to individuals in elementary jobs. Working in semi-skilled jobs implies that the individuals have 0.2 fewer trainings comapared to individuals in elementary jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of trainings with 0.03 fewer trainings compared to working in elementary occupations. 
+
+When increasing the age of the individual by 10 years, the number of on-job trainings participated in in the last year reduces by approximately 3 trainings. 
+The number of trainings is also negatively correlated with the usage of spreadsheed software daily for the job, *g_q05e_ every day = -0.159*, and if the job requires to keep up to date with new products or services less than once in a month (*d_q13c_Less than once a month = -0.162*). Also, if the individual has obtained a professional degree, i.e. practical, technical or occupationally specific programme, the number of trainings is reduced by 0.1 trainings (*edcat8_Tertiary – professional degree (ISCED 5B)*).
+
+However, the number of on-job trainings is positively correlated with the number of years the individual has worked. An increase of the working years (*c_q09*) by 4 years results in an increase of the trainings by approximately one training. This result is in line with the positive coefficient of the variable *yrsget* which represents the number of years in education that were necessary for the individual to get the current job. If this number of years is increased by 5 years, the number of trainings increase by approximately one training. 
+Individuals whose highest educational qualification was obtained in the field of health and welfare have on average more 0.19 more trainings per year conmpared to other fields of education (*b_q01b_Health and welfare*). Another positive correlation can be observed between the number of on-job trainings and individuals who are employees but also supervise more than 5 people. Here, the coefficient for *d_q04_t_Employee, supervising more than 5 people* amounts to 0.177 which implies an increase in the number of trainings on average by 0.177. 
+
+Moving on to the number of off-job training the individuals participated in in the past year, the linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls] .
+The coefficients indicate that working in a high-skilled job, *skill_1*, or working in a semi-skilled blue-collar occupation increase the number of off-job trainings by 0.12 trainings and 0.068 trainings, respectively, compared to working in elementray occupations. Working in a semi-skilled white-collar occupation, *skill_2*, has a small negative effect on the number of off-job trainings. 
+
+As for on-job trainings, we observe a negative correlation between the number of off-job trainings and age of the individual. An increase in age by 10 years reduces the number of trainings by 1.5 trainings. 
+Another negative effect is observed if the individual never conducts work-related transaction over the internet, *g_q05d_Never*. Here, the number of trainings is reduced by 0.3 trainings. The number of off-job trainings is also negatively correlated with individuals who never participate in real-time discussions on the internet as the negative coefficient of *g_q05h_Never* indicates a reduction in the number trainings by 0.18 trainings. If the individual perceives her formal education as somewhat useful for the current job, *b_q10c_Somewhat useful*, the number of off-job trainings decreases by 0.18. 
+
+We observe an increase in the number of off-job trainings by 0.3 trainings if the employee never uses spreadsheets at work (*g_q05e_Never*). If the employee uses a computer in general for her work, the number of off-job trainings increases by 0.29. An increase in the number of years the individual had been employed by 3 years, increases the number of off-job trainings by one training (*c_q09*). Indviduals who are supervising more than 1000 people are also participating in 0.28 more trainings than individuals who are not supervising employees (*d_q06a_More than 1000 people*). Furthermore, the number of off-job trainings is higher by 0.22 trainings for individuals who are ready to learn.
+
+
 
 ## Out-of-Sample Evaluation Results
 
-present out of sample performance and compare to OLS
+In this section we show the performance of the regression regularized using Lasso compared to an Ordinary-Least-Squares (OLS) regression.
+The out-of-sample deviance, $R^2$, is used to evaluate the performance of the model. We obtain it by calculating the deviance between the model's prediction after being trained on the training data and the new data, namely the test data (see eq:OOS). The lower the out-of-sample deviance, the higher is the out-of-sample performance and thus the better the model.
+
+$$ dev_OOS(\hat{beta}) = \sum_(n+i)^(n+m) (y_i-x_i'\hat{beta})^2  $$ {#eq:OOS}
+
+For the linear models at hand we can see in Figure \ref{oos_onjob} that the $R^2$ for the model using Lasso regularization has a higher mean than the OLS model. Hence, we can say that the out-of-sample performance of Lasso regularized model is better as it allows for less noise in the data and thus reduces overfitting. The same holds for the models for off-job trainings as shown in Figure \ref{oos_offjob}. Here, we can also observe that the out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
+Also, if we look at the accuracies of the models, we see that the regularized models achieve higher accuracies compared to the OLS models. For on-job trainings, we obtain in the linear model an accurarcy of 0.04696 compared to a lasso regularized model with an accuracy of 0.04921.
+Turning to the accuracies of the models for off-job trianing it is evident that the regularized model performs better than the unregularized model. The accuracy of the OLS model is negative, -0.00757, while the lasso regularized model achieves an accuracy of 0.01972.
+
+![Linear model: Out-of-sample validation for on-job training\label{oos_onjob}](..\Results\Plots\outofsample_validation_onJob.png){ width=50% }
+
+![Linear model: Out-of-sample validation for off-job training\label{oos_open}](..\Results\Plots\outofsample_validation_offJob.png){ width=50% }
+
+
 
 # Lasso Logistic Model 
 
@@ -197,6 +228,227 @@ Which results can be expected? What is new? Where lies the progress for science?
 # (APPENDIX) Appendix {-} 
 
 # Appendix: Tables
+
+
+Table: Lasso linear regression for on-job training \label{lin_reg_onjob}
+
+\footnotesize
+|     |   Coefficients | Feature                                                                               |
+|----:|---------------:|:--------------------------------------------------------------------------------------|
+|   0 |   -0.292754    | age_r                                                                                 |
+|   1 |   -0.0043783   | j_q03b                                                                                |
+|   2 |    0.179486    | yrsget                                                                                |
+|   3 |    0.266616    | c_q09                                                                                 |
+|   4 |    0.11098     | c_q10a                                                                                |
+|   5 |    0.150865    | readytolearn                                                                          |
+|   6 |    0.052781    | earnmthallppp                                                                         |
+|   7 |   -0.159132    | g_q05e_Every day                                                                      |
+|   8 |    0.0204591   | g_q05e_Less than once a month                                                         |
+|   9 |   -0.00896565  | g_q05e_Less than once a week but at least once a month                                |
+|  10 |   -0.000838294 | g_q05e_Never                                                                          |
+|  11 |    0.0063086   | d_q12b_A lower level would be sufficient                                              |
+|  12 |   -0.00724959  | d_q12b_This level is necessary                                                        |
+|  13 |    0.0179174   | vet_True                                                                              |
+|  14 |    0.0136302   | g_q05a_Every day                                                                      |
+|  15 |    0.00939957  | g_q05a_Less than once a week but at least once a month                                |
+|  16 |    0.0189398   | g_q05a_Never                                                                          |
+|  17 |    0.0761009   | f_q07b_Yes                                                                            |
+|  18 |    0.103459    | g_q05c_Every day                                                                      |
+|  19 |   -0.00483822  | g_q05c_Less than once a month                                                         |
+|  20 |   -0.0369135   | g_q05c_Less than once a week but at least once a month                                |
+|  21 |   -0.0173969   | g_q05c_Never                                                                          |
+|  22 |    0.0555923   | g_q05d_Every day                                                                      |
+|  23 |   -0.0223127   | g_q05d_Less than once a month                                                         |
+|  24 |    0.0493511   | g_q05d_Less than once a week but at least once a month                                |
+|  25 |    0.0759526   | g_q05d_Never                                                                          |
+|  26 |   -0.0183738   | d_q12c_1 to 6 months                                                                  |
+|  27 |    0.0460864   | d_q12c_3 years or more                                                                |
+|  28 |   -0.0368091   | d_q12c_7 to 11 months                                                                 |
+|  29 |   -0.0568734   | d_q12c_Less than 1 month                                                              |
+|  30 |    0.0301412   | d_q12c_None                                                                           |
+|  31 |   -0.0418013   | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                                    |
+|  32 |   -0.000107181 | edcat8_Primary or less (ISCED 1 or less)                                              |
+|  33 |    0.0606026   | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)                        |
+|  34 |   -0.0430088   | edcat8_Tertiary – bachelor degree (ISCED 5A)                                          |
+|  35 |    0.0372705   | edcat8_Tertiary – master degree (ISCED 5A)                                            |
+|  36 |   -0.105282    | edcat8_Tertiary – professional degree (ISCED 5B)                                      |
+|  37 |    0.0992461   | edcat8_Tertiary – research degree (ISCED 6)                                           |
+|  38 |   -0.0647511   | g_q04_Yes                                                                             |
+|  39 |    0.0716229   | g_q05f_Every day                                                                      |
+|  40 |   -0.0312493   | g_q05f_Less than once a month                                                         |
+|  41 |   -0.0510465   | g_q05f_Less than once a week but at least once a month                                |
+|  42 |    0.0512698   | g_q05f_Never                                                                          |
+|  43 |   -0.0396136   | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24                  |
+|  44 |   -0.00988211  | computerexperience_Yes                                                                |
+|  45 |    0.0826479   | b_q10a_Yes                                                                            |
+|  46 |    0.125839    | d_q13c_Every day                                                                      |
+|  47 |   -0.162642    | d_q13c_Less than once a month                                                         |
+|  48 |   -0.0942772   | d_q13c_Less than once a week but at least once a month                                |
+|  49 |   -0.0514091   | d_q13c_Never                                                                          |
+|  50 |    0.0399117   | g_q05h_Every day                                                                      |
+|  51 |    0.0795065   | g_q05h_Less than once a month                                                         |
+|  52 |    0.0984154   | g_q05h_Less than once a week but at least once a month                                |
+|  53 |   -0.05333     | pared_Neither parent has attained upper secondary                                     |
+|  54 |    0.0151634   | b_q14a_Yes                                                                            |
+|  55 |   -0.00350692  | d_q03_The private sector (for example a company)                                      |
+|  56 |    0.166267    | d_q03_The public sector (for example the local government or a state school)          |
+|  57 |   -0.0947999   | b_q10c_Not useful at all                                                              |
+|  58 |   -0.0271457   | b_q10c_Somewhat useful                                                                |
+|  59 |    0.149894    | b_q10c_Very useful                                                                    |
+|  60 |   -0.0985501   | b_q01b_Engineering, manufacturing and construction                                    |
+|  61 |   -0.0380066   | b_q01b_General programmes                                                             |
+|  62 |    0.186284    | b_q01b_Health and welfare                                                             |
+|  63 |   -0.0499852   | b_q01b_Humanities, languages and arts                                                 |
+|  64 |    0.00095563  | b_q01b_Science, mathematics and computing                                             |
+|  65 |   -0.01057     | b_q01b_Services                                                                       |
+|  66 |   -0.0306996   | b_q01b_Social sciences, business and law                                              |
+|  67 |   -0.0795014   | g_q06_Straightforward                                                                 |
+|  68 |    0.00205237  | j_q04a_Yes                                                                            |
+|  69 |    0.083128    | d_q06a_251 to 1000 people                                                             |
+|  70 |    0.0250342   | d_q06a_51 to 250 people                                                               |
+|  71 |    0.0952915   | d_q06a_More than 1000 people                                                          |
+|  72 |    0.0363452   | g_q08_Yes                                                                             |
+|  73 |    0.0472953   | d_q06b_Increased                                                                      |
+|  74 |    0.0024297   | d_q06b_Stayed more or less the same                                                   |
+|  75 |    0.00693864  | g_q05g_Every day                                                                      |
+|  76 |    0.0336911   | g_q05g_Less than once a month                                                         |
+|  77 |   -0.000745596 | g_q05g_Less than once a week but at least once a month                                |
+|  78 |    0.145367    | g_q05g_Never                                                                          |
+|  79 |    0.0310869   | d_q09_A temporary employment agency contract                                          |
+|  80 |    0.0502096   | d_q09_An apprenticeship or other training scheme                                      |
+|  81 |    0.0118571   | d_q09_An indefinite contract                                                          |
+|  82 |    0.0123539   | d_q09_No contract                                                                     |
+|  83 |    0.0340834   | d_q09_Other                                                                           |
+|  84 |    0.0232184   | b_q14b_Other                                                                          |
+|  85 |    0.00987163  | b_q14b_To be less likely to lose my job                                               |
+|  86 |    0.0837637   | b_q14b_To do my job better and/or improve career prospects                            |
+|  87 |    0.0879889   | b_q14b_To increase my knowledge or skills on a subject that interests me              |
+|  88 |   -0.00636807  | b_q14b_To increase my possibilities of getting a job, or changing a job or profession |
+|  89 |   -0.011668    | b_q14b_To obtain a certificate                                                        |
+|  90 |    0.0132574   | b_q14b_To start my own business                                                       |
+|  91 |   -0.00414979  | gender_r_Male                                                                         |
+|  92 |    0.150531    | b_q26a_t_Yes                                                                          |
+|  93 |    0.038162    | d_q04_t_Employee, supervising fewer than 5 people                                     |
+|  94 |    0.177062    | d_q04_t_Employee, supervising more than 5 people                                      |
+|  95 |    0.126982    | d_q14_Extremely satisfied                                                             |
+|  96 |    0.0739403   | d_q14_Neither satisfied nor dissatisfied                                              |
+|  97 |    0.109439    | d_q14_Satisfied                                                                       |
+|  98 |   -0.245979    | skill_1                                                                               |
+|  99 |   -0.200437    | skill_2                                                                               |
+| 100 |   -0.0343195   | skill_3                                                                               |
+\normalsize
+
+Table: Lasso linear regression for off-job training \label{lin_reg_open}
+
+\footnotesize
+|     |   Coefficients | Feature                                                                               |
+|----:|---------------:|:--------------------------------------------------------------------------------------|
+|   0 |   -0.151999    | age_r                                                                                 |
+|   1 |   -0.0138795   | j_q03b                                                                                |
+|   2 |    0.025427    | yrsget                                                                                |
+|   3 |    0.28891     | c_q09                                                                                 |
+|   4 |   -0.0136086   | c_q10a                                                                                |
+|   5 |    0.224639    | readytolearn                                                                          |
+|   6 |   -0.0622156   | earnmthallppp                                                                         |
+|   7 |    0.0364067   | g_q05e_Every day                                                                      |
+|   8 |    0.216647    | g_q05e_Less than once a month                                                         |
+|   9 |    0.0320373   | g_q05e_Less than once a week but at least once a month                                |
+|  10 |    0.300763    | g_q05e_Never                                                                          |
+|  11 |    0.0360178   | f_q07a_Yes                                                                            |
+|  12 |    0.0791551   | d_q12b_A lower level would be sufficient                                              |
+|  13 |    0.0456419   | d_q12b_This level is necessary                                                        |
+|  14 |   -0.0798626   | vet_True                                                                              |
+|  15 |   -0.0307748   | g_q05a_Every day                                                                      |
+|  16 |   -0.0233737   | g_q05a_Less than once a month                                                         |
+|  17 |   -0.117025    | g_q05a_Less than once a week but at least once a month                                |
+|  18 |   -0.0186612   | g_q05a_Never                                                                          |
+|  19 |    0.0356576   | g_q05c_Every day                                                                      |
+|  20 |    0.00287966  | g_q05c_Less than once a month                                                         |
+|  21 |   -0.0971144   | g_q05c_Less than once a week but at least once a month                                |
+|  22 |   -0.00899534  | g_q05c_Never                                                                          |
+|  23 |   -0.127509    | g_q05d_Every day                                                                      |
+|  24 |   -0.0471858   | g_q05d_Less than once a month                                                         |
+|  25 |   -0.093704    | g_q05d_Less than once a week but at least once a month                                |
+|  26 |   -0.298242    | g_q05d_Never                                                                          |
+|  27 |    0.0262656   | d_q12c_1 to 6 months                                                                  |
+|  28 |   -0.0524124   | d_q12c_3 years or more                                                                |
+|  29 |   -0.0107216   | d_q12c_7 to 11 months                                                                 |
+|  30 |   -0.0294456   | d_q12c_Less than 1 month                                                              |
+|  31 |    0.013063    | d_q12c_None                                                                           |
+|  32 |   -0.000973135 | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                                    |
+|  33 |   -0.00962121  | edcat8_Primary or less (ISCED 1 or less)                                              |
+|  34 |   -0.099439    | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)                        |
+|  35 |    0.0114505   | edcat8_Tertiary – bachelor degree (ISCED 5A)                                          |
+|  36 |    0.044422    | edcat8_Tertiary – master degree (ISCED 5A)                                            |
+|  37 |   -0.113532    | edcat8_Tertiary – professional degree (ISCED 5B)                                      |
+|  38 |   -0.0885221   | edcat8_Tertiary – research degree (ISCED 6)                                           |
+|  39 |    0.191632    | edcat8_Upper secondary (ISCED 3A-B, C long)                                           |
+|  40 |    0.298119    | g_q04_Yes                                                                             |
+|  41 |    0.111086    | g_q05f_Less than once a month                                                         |
+|  42 |   -0.0641919   | g_q05f_Less than once a week but at least once a month                                |
+|  43 |   -0.146666    | g_q05f_Never                                                                          |
+|  44 |    0.0449273   | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24                  |
+|  45 |    0.139708    | b_q10a_Yes                                                                            |
+|  46 |    0.146047    | d_q13c_Every day                                                                      |
+|  47 |   -0.0845384   | d_q13c_Less than once a month                                                         |
+|  48 |    0.0402694   | d_q13c_Less than once a week but at least once a month                                |
+|  49 |   -0.0427484   | d_q13c_Never                                                                          |
+|  50 |    0.0416819   | g_q05h_Every day                                                                      |
+|  51 |   -0.110962    | g_q05h_Less than once a month                                                         |
+|  52 |   -0.0598274   | g_q05h_Less than once a week but at least once a month                                |
+|  53 |   -0.18279     | g_q05h_Never                                                                          |
+|  54 |    0.00104829  | pared_At least one parent has attained tertiary                                       |
+|  55 |   -0.130121    | pared_Neither parent has attained upper secondary                                     |
+|  56 |    0.0399298   | b_q14a_Yes                                                                            |
+|  57 |   -0.0199741   | d_q03_The private sector (for example a company)                                      |
+|  58 |    0.0603001   | d_q03_The public sector (for example the local government or a state school)          |
+|  59 |   -0.0634292   | b_q10c_Not useful at all                                                              |
+|  60 |   -0.183465    | b_q10c_Somewhat useful                                                                |
+|  61 |    0.0237475   | b_q10c_Very useful                                                                    |
+|  62 |    0.0670203   | b_q01b_Engineering, manufacturing and construction                                    |
+|  63 |   -0.0135331   | b_q01b_General programmes                                                             |
+|  64 |    0.210205    | b_q01b_Health and welfare                                                             |
+|  65 |   -0.0246535   | b_q01b_Humanities, languages and arts                                                 |
+|  66 |    0.160249    | b_q01b_Science, mathematics and computing                                             |
+|  67 |    0.0947835   | b_q01b_Services                                                                       |
+|  68 |    0.0288766   | b_q01b_Social sciences, business and law                                              |
+|  69 |   -0.0328424   | g_q06_Moderate                                                                        |
+|  70 |    0.00554308  | j_q04a_Yes                                                                            |
+|  71 |    0.0296164   | d_q06a_11 to 50 people                                                                |
+|  72 |    0.0762181   | d_q06a_251 to 1000 people                                                             |
+|  73 |    0.0771511   | d_q06a_51 to 250 people                                                               |
+|  74 |    0.283448    | d_q06a_More than 1000 people                                                          |
+|  75 |   -0.118146    | g_q08_Yes                                                                             |
+|  76 |    0.071801    | d_q06b_Increased                                                                      |
+|  77 |   -0.0112068   | d_q06b_Stayed more or less the same                                                   |
+|  78 |   -0.0360649   | g_q05g_Every day                                                                      |
+|  79 |   -0.0360528   | g_q05g_Less than once a month                                                         |
+|  80 |   -0.0200237   | g_q05g_Less than once a week but at least once a month                                |
+|  81 |   -0.0114513   | d_q09_A temporary employment agency contract                                          |
+|  82 |    0.111856    | d_q09_An apprenticeship or other training scheme                                      |
+|  83 |    0.0812359   | d_q09_An indefinite contract                                                          |
+|  84 |    0.151203    | d_q09_No contract                                                                     |
+|  85 |    0.0240714   | d_q09_Other                                                                           |
+|  86 |   -0.0507221   | b_q14b_Other                                                                          |
+|  87 |    0.144671    | b_q14b_To be less likely to lose my job                                               |
+|  88 |    0.0289398   | b_q14b_To do my job better and/or improve career prospects                            |
+|  89 |    0.0662145   | b_q14b_To increase my knowledge or skills on a subject that interests me              |
+|  90 |    0.0407479   | b_q14b_To increase my possibilities of getting a job, or changing a job or profession |
+|  91 |   -0.0584367   | b_q14b_To obtain a certificate                                                        |
+|  92 |   -0.0610496   | b_q14b_To start my own business                                                       |
+|  93 |    0.0124119   | gender_r_Male                                                                         |
+|  94 |    0.13646     | b_q26a_t_Yes                                                                          |
+|  95 |   -0.0370352   | d_q04_t_Employee, supervising fewer than 5 people                                     |
+|  96 |    0.0892785   | d_q04_t_Employee, supervising more than 5 people                                      |
+|  97 |    0.0186283   | d_q14_Extremely dissatisfied                                                          |
+|  98 |    0.0331462   | d_q14_Extremely satisfied                                                             |
+|  99 |    0.0569407   | d_q14_Neither satisfied nor dissatisfied                                              |
+| 100 |    0.122717    | skill_1                                                                               |
+| 101 |   -0.00655556  | skill_2                                                                               |
+| 102 |    0.0684937   | skill_3                                                                               |
+\normalsize
+
+
 
 Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
 
