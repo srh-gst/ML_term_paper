@@ -59,7 +59,7 @@ For the study at hand the results of the first wave are used in a reduced form. 
 To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded from analysis. 
 The final dataset is cross-sectional with one observation representing the answers of one respondent. 
 
-The 52 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income. Since there are many categorical variables in the dataset, we created dummies for the different categories, yielding a total sum of variables of 161.
+The 52 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skill use at work and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income. Since there are many categorical variables in the dataset, we created dummies for the different categories. We obtain thus a total sum of variables of 180 that are used in the final dataset.
 
 As we do not restrict the dataset in terms of respondents but only in terms of questions answered, our final dataset comprises 230,691 observations of individuals.
 Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{fig:age_gender_distr}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{fig:age_gender_distr}).
@@ -72,7 +72,6 @@ The skeweness in the distribution of both off- and on-job trainings towards skil
  
 Simple OLS regressions using only a few selected variables including gender, years of education to get the current job, number of children, occupational skill level and ICT skill use at work, reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training and distance or open educational training.
 However, as we have a dataset that provides many different information on the individuals, we want to be able to include as many variables and thus information as possible in the regressions. In the next chapter we therefore explain the Lasso regression.
-
 \vspace{0.5cm}
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
