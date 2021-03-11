@@ -6,7 +6,7 @@ output:
     fig_caption: true
     latex_engine: pdflatex
     template: header.tex
-title: "Term Paper Proposal"
+title: "Open training as means of reskilling and closing the college wage gap? Evidence from the PIAAC survey"
 author:
 - name: Sarah Gust
   affiliation: ifo Institute at the University of Munich, [gust@ifo.de](mailto:gust@ifo.de)
