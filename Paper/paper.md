@@ -62,10 +62,17 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Gender distribution}
+\medskip 
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Distribution of gender within the PIAAC dataset.\par}
+\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Age distribution}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Distribution of age within the PIAAC dataset.\par}
+\end{minipage}
 \end{subfigure}
 \caption{Distribution of age and gender}
 \label{fig:age_gender_distr}
@@ -79,10 +86,16 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Classification of jobs}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Skill classification of jobs into four skill categories with category 1 being the highest skill level.\par}
+\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Age and Classification of jobs}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Distribution of age among the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 \end{subfigure}
 \caption{Distribution of occupational classifications}
 \label{fig:JobClass_distr}
@@ -98,10 +111,16 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{On-the-job trainings and classification of jobs}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Distribution of the number of on-the-job trainings and the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Open courses and classification of jobs}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Distribution of the number of open courses and the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 \end{subfigure}
 \caption{Classification of jobs and trainings}
 \label{fig:JobClass_training}
@@ -123,8 +142,9 @@ Table: Average number of on-the-job trainings per job classification \label{tab:
 | A                    |                          2.58834 |
 | N                    |                          3.61111 |
 | U                    |                          3.28139 |
-
-
+  
+  
+  
 
 Table: Average number of open training courses per job classification \label{tab:mean_offJob_Class}
 
@@ -255,21 +275,16 @@ Figure \ref{fig:lasso} shows the lasso regularization path of the linear candida
 
 ## Variable Selection
 
-When estimating the linear model using the optimal Lasso parameter for the number of on-the-job trainings a person has participated in the past year, the Lasso regularization identifies 148 columns^[Including country and industry controls]  with non-zero predictive power. The coefficients are presented in Table \ref{lin_reg_onjob}.
-We distinguish between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The reference group are elementary occupations. The coefficients of the skill dummies are non-zero in the Lasso regularized model. Surprisingly, ndividuals working in high-skilled jobs have fewer trainings than individuals in elementary jobs. Working in semi-skilled jobs reduces the number of on-the-job trainings as well but less strongly than for high-skilled jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of trainings compared to working in elementary occupations. 
+When estimating the linear model using the optimal Lasso parameter for the number of on-the-job trainings a person has participated in the past year, the Lasso regularization identifies 148 columns^[Including country and industry controls]  with non-zero predictive power. Using the number of open courses as dependent variables, linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls]. The coefficients are presented in Table \ref{lin_reg_onjob} and Table \ref{lin_reg_offjob} respectively.
+The coefficients of the skill dummies for semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*) are non-zero in both Lasso regularized models. The reference group are elementary occupations.
 
-The number of on-the-job trainings is the strongest affected positively the higher the number of years the individual has worked. An increase of the working years (*c_q09*) by 4 years results in an increase of the trainings by approximately one training. Also, the higher the educational degree and the longer the individual had to study to get the current job, the higher the number of trainings she received in the last year (*yrsget* and *edcat8_Tertiary – research degree (ISCED 6)*). 
-Jobs in which individuals have to keep up to date with new products or developments every day, *d_q13c_Every day*, imply that the individual participate in more on-the-job trainings.
-A higher willingness to learn or the wish to increase their skills and knowledge or if the respondent perceives her formal education as very useful for the current job increases the amount of trainings. Another positive effect can be observed if the individual works in a larger firm and if she supervises other employees.  
+Surprisingly, working in high-skilled jobs reduces on-the-job trainings compared to individuals in elementary jobs. Working in semi-skilled jobs reduces the number of on-the-job trainings as well but less strongly than for high-skilled jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of on-the-job trainings compared to working in elementary occupations. 
+For the open courses, the coefficients indicate that working in a high-skilled job or working in a semi-skilled blue-collar occupation increase the number of open courses compared to working in elementray occupations. Working in a semi-skilled white-collar occupation has a small negative effect on the number of open courses. 
+The number of on-the-job trainings is higher, the higher the educational degree and the longer the individual had to study to get the current job, the higher the number of trainings she received in the last year (*yrsget* and *edcat8_Tertiary – research degree (ISCED 6)*). The contrary holds for open courses. Here, the coefficients indicate that individuals with lower educational qualification participate in more open courses and that a higher education has a negative effect on the number of open courses.
+Jobs in which individuals have to keep up to date with new products or developments every day, *d_q13c_Every day*, imply that the individual participate in more on-the-job trainings. A similar conclusion can be drawn for the number of open courses. 
+Other coefficients especially regarding ICT skills and usage are rather contradicting and inconclusive. 
 
-Other contradicting results are that never using a programming language at work, *g_q05g_Never*, [**hier fehlt was**] while using the internet for research purposes every day, *g_q05c_Every day*, have positive effects on the number of on-the-job trainings. The number of trainings is also negatively correlated with the straightforward usage of a PC at work in general, *g_q06_Straightforward* and *g_q04_Yes*, and with the usage of spreadsheed software daily for the job, *g_q05e_ every day*, specifically. If the job requires to keep up to date with new products or services less than once in a month (*d_q13c_Less than once a month*) the number of trainings are lower. A lower education and the subjective feeling that the formal education is not useful for the current job further decrease the number of trainings an individual received in the past year.  
- 
-Moving on to the number of open courses the individuals participated in in the past year, the linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls] .
-The coefficients indicate that working in a high-skilled job, *skill_1*, or working in a semi-skilled blue-collar occupation increase the number of open courses compared to working in elementray occupations. Working in a semi-skilled white-collar occupation, *skill_2*, has a small negative effect on the number of open courses. 
-
-But also here we obtain mixed reults. We observe the strongest increase in the number of open courses if the employee never uses spreadsheets at work, *g_q05e_Never*, and if the employee uses a computer in general for her work, *g_q04_Yes*. However, if the individual never conducts work-related transactions over the internet, *g_q05d_Never* or if the individual never participates in real-time discussions on the internet as the negative coefficient of *g_q05h_Never*, the number of open courses decrease. Also, the regression results indicate that the fear of loosing the current job is an important factor that affects positively the number of open courses. As for on-the-job trainings, the subjective perception that the formal education is at least somewhat useful for the current job is negatively correlated with the number of open courses. Again, working in larger firms and the number of years in employment increase the open course participation.
-
-Overall, the regression results indicate that individuals with a higher education as well as the need to always be up to date and using the computer daily participate in more on-the-job trainings and open courses. But the results also imply that the number of trainings is reduced if the individual works in a high-skilled job. This is somewhat counterintuitive also when recalling the distribution of trainings among job classifications. Figure \ref{fig:JobClass_training} clearly indicates that individuals working in high-skilled jobs receive more trainings. These discrepancies suggest that the linear model, although regularized, does not yield a good fit. The perfomance of the models will be analyzed in the next step.
+Overall, the regression results indicate that individuals with a higher education as well as the need to always be up to date and using the computer daily participate in more on-the-job trainings and open courses. But the results also imply that the number of trainings is reduced if the individual works in a high-skilled job. This is somewhat counterintuitive also when recalling the distribution of trainings among job classifications. Figure \ref{fig:JobClass_training} clearly indicates that individuals working in high-skilled jobs receive more trainings. These discrepancies suggest that the linear model, although regularized, does not yield a good fit for the data. Therefore, the perfomance of the models will be analyzed in the next step.
 
 
 ## Out-of-Sample Evaluation Results
@@ -280,7 +295,7 @@ $$ dev_{OOS}(\hat{\beta}) = \sum_i (n+i)^{n+m} (y_i-x_i'\hat{\beta})^2  $$ {#eq:
 
 For the linear models, we can see in Figure \ref{fig:oos} that the $R^2$ for the Lasso regularized model has a higher mean than the OLS model. Hence, the out-of-sample performance of model with the Lasso penalty is better as it allows for less noise in the data and reduces overfitting. The same holds for the models for off-job trainings as we show in Figure \ref{fig:oos}. The out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
 The regularized models achieve higher accuracies compared to the OLS models. Table \ref{tab:lin_accuracy} shows that for on-the-job trainings, the Lasso linear model achieves a test accuracy of 0.04921 which is slightly higher than the linear model that yields 0.04696 test accuracy.
-Turning to open courses it is also evident that the regularized model performs better on new data than the unregularized model. However, both the test accuracy of the OLS model and the Lasso regularized model are negative. This implies that the null model performs better than the model that includes regressors. This is line with the counterintuitive regression results in the previous chapter. Also, the accuracy results of the Lasso regularized linear model are much lower than those of the Lasso logistic model (test accuracy = 0.7292 for on-the job-training and 0.8188 for open education). Therefore, we rely on the Lasso logistic model. 
+Turning to open courses it is also evident that the regularized model performs better on new data than the unregularized model. However, both the test accuracy of the OLS model and the Lasso regularized model are negative. This implies that the null model performs better than the model that includes regressors. This is line with the counterintuitive regression results in the previous chapter. Also, the accuracy results of the Lasso regularized linear model are much lower than those of the Lasso logistic model (test accuracy = 0.7292 for on-the-job training and 0.8188 for open education). Therefore, we rely on the Lasso logistic model. 
 
 \vspace{0.5cm}
 \begin{figure}[!h]
@@ -319,7 +334,7 @@ Table: Accuracy of the Lasso linear model \label{tab:lin_accuracy}
 
 This paper illustrates the use of Lasso regularization to identify characteristics that influence the probability of receiving training. It is often claimed that employees who i.e. worked in non-programming jobs before could try to improve their job opportunities by reskilling and acquiring programming skills using Massiv Open Online Courses [@WorldEconomicForum.October2020; @Garrido.2016]. However, we find that people in higher skilled occupations, with a higher educational level, and who require computer knowledge generally receive more training. Thus, trainings cannot be seen as a stepping stone to move from middle skilled occupations to higher skilled occupations. Both on-the-job traings and open educational courses serve highly skilled workers. This supports our hypothesis that open courses are unable to provide extensive retraining as they already require a decent level of ICT skills.  
 
-Applying a Lasso logistic model to analyze training partcipation represent a great starting point for future research. Due to the lock-downs and economic shutdowns during the Covid-19 pandemic larger as well as smaller businesses are facing bancruptcy or had to reduce their workforce or limit the number of new hirings to reduce costs [@barrero2020covid]. The pandemic also pushed digitization and the adoption of robots and thus replacing workforce [@zeng2020high]. Especially the first lock-down has led to a massive increase in Google searches for MOOCs. The aim of our future research is to find out whether this demand shock led to any changes in the characteristics of people that partcipate in trainings. The OECD already started a second cycle of the PIAAC survey and results are to be expected for 2022 to 2023. With this data, we can compare pre- and post-Covid-19 trends in training participation. 
+Applying a Lasso logistic model to analyze training partcipation represent a great starting point for future research. Due to the lock-downs and economic shutdowns during the Covid-19 pandemic larger as well as smaller businesses are facing bancruptcy or had to reduce their workforce or limit the number of new hirings to reduce costs [@barrero2020covid]. The pandemic also pushed digitization and the adoption of robots and thus replacing workforce [@zeng2020high]. Especially the first lock-down has led to a massive increase in Google searches for MOOCs [@Google.2021]. The aim of our future research is to find out whether this demand shock led to any changes in the characteristics of people that partcipate in trainings. The OECD already started a second cycle of the PIAAC survey and results are to be expected for 2022 to 2023. With this data, we can compare pre- and post-Covid-19 trends in training participation. 
 
 
 # Appendix A
