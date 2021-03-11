@@ -24,150 +24,123 @@ spacing: double
 
 # Introduction
 
-Digitization has fundamentally changed labor demand. Middle-skilled workers were replaced by technology while the demand for high skilled workers and low-skilled workers has grown [@acemoglu2011skills; @david2013growth].  @david2013growth show that increased employment at the lower tail of the earnings distribution is mainly due to an increase in service occupations. At the upper tail technological changed led to a college wage premium: wages of college graduates relative to high-school graduates increased [@acemoglu2011skills]. @delarica2020job develop abstract, routine and manual task measures and find that a one-standard-deviation increase in abstract tasks is related to a 3.3-log-point wage premium. For each standard deviation of routine tasks there is a 2.6 to 2.9-log-point wage penalty. The vast literature on the change of job tasks takes skills of workers as pre-defined. However, workers and firms can also invest in new skills via training. Especially the emergence of Massiv Open Online Courses (MOOC) over the past years has facilitated global access to ICT and programming courses.  In this paper, we investigate the specific characteristics of workers that participate in on-the-job training and open education. Is training and especially new open educational programs an opprtunity for middle skilled workers that are primarily effected by decreasing job opportunities to take on more abstract tasks? Or does training reinforce inequalities because only high-skilled workers receive and invest in training?  
+Digitization has fundamentally changed labor demand. Middle-skilled workers were replaced by technology while the demand for high skilled workers and low-skilled workers has grown [@acemoglu2011skills; @david2013growth].  @david2013growth show that increased employment at the lower tail of the earnings distribution is mainly due to an increase in service occupations. At the upper tail, technological changed led to a college wage premium: wages of college graduates relative to high-school graduates increased [@acemoglu2011skills]. @delarica2020job find that a one-standard-deviation increase in abstract tasks is related to a 3.3-log-point wage premium. For each standard deviation of routine tasks there is a 2.6 to 2.9-log-point wage penalty. The vast literature on the change of job tasks takes skills of workers as pre-defined. However, workers and firms can also invest in new skills via training. Massiv Open Online Courses (MOOC) have facilitated global access to ICT and programming courses. It is often claimed thate mployees who i.e. worked in non-programming jobs before could try to improve their job opportunties by reskilling and acquiring programming skills using MOOC [@WorldEconomicForum.October2020; @Garrido.2016]. We are more skeptical that open courses can extensively contibute to retraining as they already require a decent level of ICT skills.  
 
-@becker1962investment distinguished between two kinds of training: specific and general. Specific training increases the marginal product of a worker within one specific firm while general training increases her productivity in many other firms.  In a perfect labor market workers are paid their marginal product. In such case, firms would not invest into general training of their employees as they could leave the firm and look for a better paid job. Instead, workers would pay for their general training as an investment into higher future wages. @lynch1991role and @lynch1992private find that on-the job training tends to be firm specific in the US and thus wage raises cannot be taken along to subsequent employers. Off-the-job training by proprietary institution have little effect on wages in the current employment but raise future expected wages in subsequent employment.  @acemoglu1999beyond argue that firms still invest in general training due to their monopsony power. Wages increase by less than the marginal productivity and firms can profit. @konings2015impact find that an increase in the share of trained workers by 10 percentage points raises the productivity by 1.7 to 3.2 percent while wages only increase by 1.0 to 1.7 percent. 
+In this paper, we investigate the specific characteristics of workers that participate in on-the-job training and open education. The goal is to find out if training and especially new open educational programs are indeed an opportunity for middle skilled workers that are primarily effected by decreasing job opportunities to take on more abstract tasks. Or if training reinforces inequalities because only high-skilled workers receive and invest in training.
 
-Previous literature on training focuses on wage and productivity effects but the research on the specific characteristics of workers that participate in training is scarce. Applying a machine learning, we can identify the factors that drive the probability of receiving training from a large set of ## variables of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC). More specifically we apply a Lasso regularization, first proposed by @tibshirani1996regression. Frst, we estimate a Lasso linear model for the number of on-thejob and off-the job trainings. Second, we estimate a Lasso logistic model for the binary outcome variables of whether or not a person participated in on-the-job training or open education.
+@becker1962investment distinguished between two kinds of training: specific and general. Specific training increases the marginal product of a worker within one specific firm while general training increases her productivity in many other firms.  In a perfect labor market, workers are paid their marginal product. In such case, firms would not invest into general training of their employees as they could leave the firm and look for a better paid job. Instead, workers would pay for their general training as an investment into higher future wages. @lynch1991role and @lynch1992private find that on-the-job training tends to be firm specific in the US and thus wage raises cannot be taken along to subsequent employers. Off-the-job training by proprietary institution have little effect on wages in the current employment but raise future expected wages in subsequent employment.  @acemoglu1999beyond argue that firms still invest in general training due to their monopsony power. Wages increase by less than the marginal productivity and firms can profit. @konings2015impact find that an increase in the share of trained workers by 10 percentage points raises the productivity by 1.7 to 3.2 percent while wages only increase by 1.0 to 1.7 percent. 
 
-- summarize results for linear model here
+Previous literature on training focuses on wage and productivity effects but the research on the specific characteristics of workers that participate in training is scarce. Applying a machine learning, we can identify the factors that drive the probability of receiving training from a large set of 1,460 variables of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC). More specifically, we apply a Lasso regularization proposed by @tibshirani1996regression. In the baseline model, we estimate a Lasso logistic model for the binary outcome variables of whether or not a person participated in on-the-job training or open education. In the second prt of then paper, we estimate a Lasso linear model for the number of on-thejob and off-the job trainings. 
 
-We find that people in higher skilled occupation, with a higher educational level, and who require computer knowledge generally receive more training. Thus, traning is likely to increase productivity in high skilled jobs and fuel wage growth at the upper tail of the wage distribution. It does not seem to support workers in climbing up the skill ladder and aquire more abstract tasks. The results for on-the-job traning and open education are very similar. Individuals that do not receive on-the-job traning are also less likely to participate in open education.
+For our baseline model, we find that people in higher skilled occupation, with a higher educational level, and who require computer knowledge generally receive more training. Thus, training is likely to increase productivity in high skilled jobs and fuel wage growth at the upper tail of the wage distribution. It does not seem to support workers in climbing up the skill ladder and aquire more abstract tasks. The results for on-the-job traning and open education are very similar. Individuals that do not receive on-the-job training are also less likely to participate in open education. With the Lasso regularization, we improve upon the simple logistic model. The accuracy increases from around 0.5 in the logistic model to 0.7 for on-the-job training and 0.8 for open education in the Lasso logistic models. Our Lasso logistic model performs much better than the Lasso linear model. The regularized linear regression results partly confirm our findings from the Lasso logistic model. Higher education as well as the need to always be up to date and using the computer daily participate in more on-the-job trainings. There is also a trend visible that lower educational levels increase the number of open courses. Other seletected variables are more puzzling. However, the out-of-sample performance of the linear regularized model is worse compared to the logistic regressions which is why we rely on those results. 
 
-- Further research
-
-
-<!--Computer capital and workers that perform routine tasks are substitutes whereas computer capital and workers that perform non-routine cognitive tasks are complements [@autor2003skill]. The declining price of computer capital has led to a U-shaped labor demand function [@acemoglu2011skills; @david2013growth]. This indicates that @david2013growth show that increased employment at the lower tail of the earnings distribution is mainly due to an increase in service occupations. At the upper tail technological changed led to a college wage premium: wages of college graduates relative to high-school graduates increased [@acemoglu2011skills].  @delarica2020job develop abstract, routine and manual task measures and find that a one-standard-deviation increase in abstract tasks is related to a 3.3-log-point wage premium. For each standard deviation of routine tasks there is a 2.6 to 2.9-log-point wage penalty.
-
-This vast literature on the change of job tasks has mainly focused on wage effects and takes skills of workers as pre-defined. However, workers and firms could also invest in new skills via training.  @becker1962investment distinguished between two kinds of on-the-job training: specific and general. Specific training increases the marginal product of a worker within one specific firm while general training increases her productivity in many other firms. In a perfect labor market workers are paid their marginal product. In such case, firms would not invest into general training of their employees as they could leave the firm and look for a better paid job. Instead, workers would pay for their general training as an investment into higher future wages. @acemoglu1999beyond argue that firms still invest in general training due to their monopsony power. Wages increase by less than the marginal productivity and firms can profit. @konings2015impact find that an increase in the share of trained workers by 10 percentage points raises the productivity by 1.7 to 3.2 percent while wages only increase by 1.0 to 1.7 percent. 
-
-Evidence on job mobility behaviour of workers is more mixed. @zweimuller2003job findings support @becker1962investment human capital theory. Workers who received firm specific training quit less often and show less job searching behaviour. Workers who received general training increased their job searching activities and quit more often. @dietz2020retention use German employer-employee data and find that training increases the retention probability. These studies focus on on-the-job training.
-
-@lynch1991role and @lynch1992private compares on-the-job to off-the-job training. She focuses on young workers that are particularly mobile. She finds that on-the job training tends to be firm specific in the US and thus wage raises cannot be taken along to subsequent employers. Off-the-job training by proprietary institution have little effect on wages in the current employment but raise future expected wages in subsequent employment. @lynch1991role shows that the probability of leaving an employer varies with respect to race, gender, and educational level. Workers with disabilities, black workers and workers with a high school degree or less increased the probability of leaving the first employer. Working in a job with collective agreement or having a college degree decreased their probability of leaving the employer. The effect of training, disability, and education disappears when @lynch1991role re-estimates the equation only for men, while these effects are particularly strong for women. 
-
-Applying a machine learning approach permits us to take a broader approach on this topic. Instead of restricting our estimation to a specific group of workers or countries, we identify the factors that drive the probability of receiving training from a set of ## variables.
-
--->
 
 # Data and Desriptive Statistics
 
-To explore these questions we use the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in their personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving. Furthermore, the study also provides comprehensive background information on the respondents' past and current education, subjective assessments of their skills and job requirements as well as information on migration (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
+
+To explore and identify the factors that drive the probability employees receive on-job or off-job training, we use the results of the survey of the Programme for the International Assessment of Adult Competencies (PIAAC) (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). The survey was conducted by the Organisation for Economic Co-operation and Development (OECD) with the goal to assess which skills adults need to manage challenges and tasks at work as well as in their personal life. The study targeted explicitly the skills in literacy, numeracy and adaptive problem solving. However, for our research question the focus lies on the comprehensive background information the study also provides. This comprises the respondents' past and current education and job-related trainings, subjective assessments of their skills and job requirements (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
 The study was conducted in cycles and the first cycle consisted of three rounds which began in 2011/12. In the first round 24 countries took part. In the second round nine additional countries participated and in the last round individuals from five different countries were questioned. In total 40 countries participated in the first cycle comprising about 5,000 randomly selected adults who were between 16 and 65 years old. The second cycle started in 2018 and results are to be expected in 2022 (@GESISLeibnizInstitutefortheSocialSciences.12.02.2021). 
 
-For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the 'research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization'. To answer this, the original PIAAC dataset is reduced to 52 variables in total. For example, information on the various test results conducted in the study are excluded as well as variables with no or very few observations. Additionally, columns that contain infor To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded. 
+For the study at hand the results of the first wave are used in a reduced form. The original dataset comprises 1,460 columns with 230,691 observations of respondents. However, the research question of this paper is to analyze the probability of trainings for middle-skilled workers compared to trainings for high-skilled and low-skilled workers in the wake of the increasing polarization of skills following from digitization. To answer this, the original PIAAC dataset is reduced to 52 variables in total. For example, information on the various test results conducted in the study are excluded as well as variables with no or very few observations. Additionally, we focus on columns that contain information on the current job to estimate the training probability.
+To achieve comparability across countries, questions which were only answered by respondents living in the United States are also excluded from analysis. 
 The final dataset is cross-sectional with one observation representing the answers of one respondent. 
 
-The 128 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skills and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income.
+The 52 variables we kept in the final dataset comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skill use at work and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income. Since there are many categorical variables in the dataset, we created dummies for the different categories. We obtain thus a total sum of variables of 180 that are used in the final dataset.
+
 As we do not restrict the dataset in terms of respondents but only in terms of questions answered, our final dataset comprises 230,691 observations of individuals.
-Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{hist_gender}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{hist_age}).  
-The classification of the respondents jobs in terms of skills is also evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Fiugre \ref{box_age_job}).  
+Of those 230,691 individuals, 122,830 are female and 107,859 are male (see Figure \ref{fig:age_gender_distr}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{fig:age_gender_distr}).
+The number of respondents working in skilled white-collar occupations is the highest with 73,090 respondents. 53,756 respondents work in semi-skilled white-collar occupations and 38,238 are working in semi-skilled blue-collar occupations. Occupations classified as elementary amount to 19,363 respondents (see Figure \ref{fig:JobClass_distr}).
 
-
-The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training, seminars or workshops, distance or open training courses as well as private lessons. 
-The simple OLS regressions reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training, seminars or workshops, distance or open educational training as well as for private lessons. However, for semi-skilled jobs, the picture is slightly different. Here, the number of seminars or workshops and private lessons are positively correlated with the semi-skilled occupations. 
-
-![Distribution of Gender\label{hist_gender}](..\Results\Plots\barplot_gender.png){ width=50% }
-
-![Distribution of Age\label{hist_age}](..\Results\Plots\hist_age.png){ width=50% }
-
-![Age and Classification of jobs\label{box_age_job}](..\Results\Plots\box_age_job_classification.png){ width=50% }
-
-
-# Lasso Linear Model
-
-We start with a simple linear regression model $y = X \beta + \varepsilon$, where $y \in \mathbb{R}^N$ is the predicted participation in on-job or off-job training,  $X \in \mathbb{R}^{N \times k}$ are the vectors of covariates, and $\varepsilon \in \mathbb{R}^N$ is the residual with the standard assumptions of OLS. To select the set of covariates with the strongest predictive power from our set of ... variables, we apply the Least absolute shrinkage and selection operator (Lasso) that was first proposed by @tibshirani1996regression. We add the Lasso penalty equal to $\sum_k |\beta_k|$ to our linear model. The Lasso linear estimator $\hat{\beta}$ is then given by
-
-$$ \hat{\beta}_\lambda = argmin\{\sum_i (y_i-x_i^T\beta)^2  + \lambda\sum_k |\beta_k|\}  $$ {#eq:lasso}
-
-That is, we minimize the sum of squared residuals but the Lasso penalty puts a cost at every $\hat{\beta} \neq 0$ and thus, we penalize complexity and avoid over-fitting the model. $\lambda >0$ is the penalty weight or the *tuning parameter*. 
-
-## Training the Model 
-
-Figure \ref{fig:lasso} shows the lasso regularization path of candidate models $\hat{\beta}_1$ ... $\hat{\beta}_t$ that we obtained by minimizing Equation @eq:lasso over a sequence of tuning parameters $\lambda_1 < \lambda_2 < ... < \lambda_T$ with on-the-job training and open education as dependent variable respectively. The vertical axis contains different levels of $\hat{\beta}$. The horizontal axis contains different levels for $\lambda$. Each vertical section along the horizontal axis, represents one candidate model. Moving from higher to lower $\lambda$, the algorithm includes more nonzero $\hat{\beta}_k$ and the model becomes more complex. To find the optimal value for $\lambda$ we use *5-fold cross validation*. We split the data in five random, evenly sized subsets and derive the lasso paths $\hat{\beta}_1^k$ ... $\hat{\beta}_T^k$ on each of the folds but the last fold to train the models. Then we use the left out fold to obtain the out-of-sample error for each candidate model. The $\hat{\lambda}_t$ that minimizes the out-of-sample error is selected as the optimal $\hat{\lambda}_t$.     
+The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training and distance or open training courses. On-the-job trainings comprise all trainings that are organized by the employer for his employees. Such trainings take place during working time and are often conducted by internal experts of the respective topic [@acemoglu2011skills]. Open or distance education courses, on the other hand, comprise methods of learning and teaching without or only little face-to-face interactions and separations in time and space, e.g. MOOCs [@Jung.2019]. 
+In the PIAAC survey, the respective questions for these two types of trainings are the following: *How many of open or distance education activities did you participate in?* and *How many of organized sessions for on-the-job training or 
+training by supervisors or co-workers did you participate in?*. 
+The classification of the respondents jobs in terms of skills is evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Figure \ref{fig:JobClass_age}). Looking at the distribution of on-job trainings and occupational classification alone shows that occupations classified as skilled or semi-skilled white-collar occupations received slightly more trainings in the last year than blue-collar occupations (see figure \ref{fig:JobClass_training}). On average individuals working in skilled white-collar occupations participated in 3.6 on-job trainings and while individuals in semi-skilled white-collar occupations participated in on average approximately 3 on-job trainings. Individuals working in elementary occupations received the least on-job trainings with on average 2.58 trainings in the last year (see Table \ref{tab:mean_onJob_Class}). 
+The distribution of the off-job trainings among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{fig:JobClass_training}). The average number of off-job trainings for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). 
+The skeweness in the distribution of both off- and on-job trainings towards skilled white-collar occupations is evident. 
+ 
+Simple OLS regressions using only a few selected variables including gender, years of education to get the current job, number of children, occupational skill level and ICT skill use at work, reveal that there are positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training and distance or open educational training.
+However, as we have a dataset that provides many different information on the individuals, we want to be able to include as many variables and thus information as possible in the regressions. In the next chapter we therefore explain the Lasso regression.
 
 \vspace{0.5cm}
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{On-the-job training}
+\caption{Gender distribution}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{Open education}
+\caption{Age distribution}
 \end{subfigure}
-\caption{Linear model: Lasso path}
-\label{fig:lasso}
+\caption{Distribution of age and gender}
+\label{fig:age_gender_distr}
 \end{figure}
-![](..\Results\Plots\lasso_path_onJob.png){ width=50% }
-![](..\Results\Plots\lasso_path_openeduc.png){ width=50% }
+![](..\Results\Plots\barplot_gender.png){ width=50% } 
+![](..\Results\Plots\hist_age.png){ width=50% }
 \vspace{0.5cm}
 
-
-For the dependent variable on-the-job training, we obtain the optimal $\lambda = 0.0032$. For open education, we obtain the same optimal $\lambda = 0.0032$.
-
-
-## Variable Selection
-
-When estimating the linear model using the optimal Lasso parameter for the number of on-job trainings a person as participated in in the past year, the Lasso regularization identifies 13 columns with zero predictive power. Thus, 148 columns^[Including country and industry controls]  out of the 161 remain in the model with non-zero predictive power. The coefficients are presented in Table \ref{lin_reg_onjob}.
-We distinguish between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The reference group is *skill_4* which captures elementary occupations and all skill dummies are non-zero in the Lasso model. Individuals working in high-skilled jobs have on average 0.25 fewer trainings than individuals in elementary jobs. Working in semi-skilled jobs implies that the individuals have 0.2 fewer trainings comapared to individuals in elementary jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of trainings with 0.03 fewer trainings compared to working in elementary occupations. 
-
-When increasing the age of the individual by 10 years, the number of on-job trainings participated in in the last year reduces by approximately 3 trainings. 
-The number of trainings is also negatively correlated with the usage of spreadsheed software daily for the job, *g_q05e_ every day = -0.159*, and if the job requires to keep up to date with new products or services less than once in a month (*d_q13c_Less than once a month = -0.162*). If the individual has obtained a professional degree, i.e. practical, technical or occupationally specific programme, the number of trainings is reduced by 0.1 trainings (*edcat8_Tertiary – professional degree (ISCED 5B)*).
-
-The number of on-the-job trainings is positively correlated with the number of years the individual has worked. An increase of the working years (*c_q09*) by 4 years results in an increase of the trainings by approximately one training. This result is in line with the positive coefficient of the variable *yrsget* which represents the number of years in education that were necessary for the individual to get the current job. If this number of years increases by 5 years, the number of trainings increase by approximately one training. 
-Individuals whose highest educational qualification was obtained in the field of health and welfare have on average more 0.19 more trainings per year conmpared to other fields of education (*b_q01b_Health and welfare*). Another positive correlation can be observed between the number of on-job trainings and individuals who are employees but also supervise more than 5 people. Here, the coefficient for *d_q04_t_Employee, supervising more than 5 people* amounts to 0.177 which implies an increase in the number of trainings on average by 0.177. 
-
-Moving on to the number of off-job training the individuals participated in in the past year, the linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls] .
-The coefficients indicate that working in a high-skilled job, *skill_1*, or working in a semi-skilled blue-collar occupation increase the number of off-job trainings by 0.12 trainings and 0.068 trainings, respectively to working in elementray occupations. Working in a semi-skilled white-collar occupation, *skill_2*, has a small negative effect on the number of off-job trainings. 
-
-As for on-job trainings, we observe a negative correlation between the number of off-job trainings and age of the individual. An increase in age by 10 years reduces the number of trainings by 1.5 trainings. 
-We observe another negative effect if the individual never conducts work-related transaction over the internet, *g_q05d_Never*. Here, the number of trainings is reduced by 0.3 trainings. The number of off-job trainings is also negatively correlated with individuals who never participate in real-time discussions on the internet as the negative coefficient of *g_q05h_Never* indicates a reduction in the number trainings by 0.18 trainings. If the individual perceives her formal education as somewhat useful for the current job, *b_q10c_Somewhat useful*, the number of off-job trainings decreases by 0.18. 
-
-We observe an increase in the number of off-job trainings by 0.3 trainings if the employee never uses spreadsheets at work (*g_q05e_Never*). If the employee uses a computer in general for her work, the number of off-job trainings increases by 0.29. An increase in the number of years the individual had been employed by 3 years, increases the number of off-job trainings by one training (*c_q09*). Indviduals who are supervising more than 1000 people are also participating in 0.28 more trainings than individuals who are not supervising employees (*d_q06a_More than 1000 people*). Furthermore, the number of off-job trainings is higher by 0.22 trainings for individuals who are ready to learn.
-
-- explain implications and relate to literature
-
-## Out-of-Sample Evaluation Results
-
-In this section, we show the performance of the regression regularized using Lasso compared to an Ordinary-Least-Squares (OLS) regression.
-We compare the out-of-sample deviance, $R^2$, to evaluate the performance of the model. The out-of-sample deviance is the deviance between the model's prediction after being trained on the training data and the new data, namely the test data (see eq:OOS). The lower the out-of-sample deviance, the higher is the out-of-sample performance and thus the better the model.
-
-$$ dev_{OOS}(\hat{\beta}) = \sum_i (n+i)^{n+m} (y_i-x_i'\hat{\beta})^2  $$ {#eq:OOS}
-
-For the linear models, we can see in Figure \ref{oos_onjob} that the $R^2$ for the Lasso regularized model has a higher mean than the OLS model. Hence, the out-of-sample performance of model with the Lasso penalty is better as it allows for less noise in the data and reduces overfitting. The same holds for the models for off-job trainings as we show in Figure \ref{oos_offjob}. The out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
-The regularized models achieve higher accuracies compared to the OLS models. Table \ref{accuracy} shows that for on-job trainings, the Lasso linear model achieves an accurarcy of 0.04921 which is slightly higher than the linear model that provides 0.04696 accuracy.
-Turning off-job trianing it is evident that the regularized model performs better than the unregularized model. The accuracy of the OLS model is negative, -0.00757, while the lasso regularized model achieves an accuracy of 0.01972.
 
 \vspace{0.5cm}
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{On-the-job training}
-\label{oos_onjob}
+\caption{Classification of jobs}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{Open education}
-\label{oos_open}
+\caption{Age and Classification of jobs}
 \end{subfigure}
-\caption{Linear model: Out-of-sample validation}
-\label{fig:oos}
+\caption{Distribution of occupational classifications}
+\label{fig:JobClass_distr}
 \end{figure}
-![Linear model: On-job training\label{oos_onjob}](..\Results\Plots\outofsample_validation_onJob.png){ width=50% } 
-![Linear model: Open education\label{oos_open}](..\Results\Plots\outofsample_validation_openEduc.png){ width=50% }
+![](..\Results\Plots\barplot_job_classification.png){ width=50% }
+![](..\Results\Plots\box_age_job_classification.png){ width=50% }
 \vspace{0.5cm}
 
 
-Table: Accuracy of the Lasso linear model \label{accuracy}
 
-|                     |   Lasso linear model | OLS  |
-|--------------------:|-----------------------:|:----------------|
-|**On-job training**  |                        |                 |
-|  Training accuracy  |                  |           |
-|  Test accuracy      |   0.04921               | 0.04696          |
-|---------------------|------------------------|-----------------|
-|**Open education**   |                        |                 |                                  
-|  Training accuracy  |                  |           |
-|  Test accuracy      |   0.01972               | -0.00757          |
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Classification of jobs and trainings}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{On-job trainings and classification of jobs}
+\end{subfigure}
+\caption{Open courses and classification of jobs}
+\label{fig:JobClass_training}
+\end{figure}
+![](..\Results\Plots\box_OntheJob_classification.png){ width=50% }
+![](..\Results\Plots\box_OpenJob_classification.png){ width=50% }
+\vspace{0.5cm}
 
+
+
+Table: Average number of on-job trainings per job classification \label{tab:mean_onJob_Class}
+
+| Job classification   |  Mean number of on-job trainings |
+|:---------------------|---------------------------------:|
+| 1                    |                          3.66353 |
+| 2                    |                          2.95611 |
+| 3                    |                          2.586   |
+| 4                    |                          2.45609 |
+| A                    |                          2.58834 |
+| N                    |                          3.61111 |
+| U                    |                          3.28139 |
+
+
+
+Table: Average number of open job training courses per job classification \label{tab:mean_offJob_Class}
+
+| Job classification   | Mean number of open training courses |
+|:---------------------|-----------------------------------:|
+| 1                    |                            2.84033 |
+| 2                    |                            2.21544 |
+| 3                    |                            2.22948 |
+| 4                    |                            1.7525  |
+| A                    |                            1.99916 |
+| N                    |                            3.16867 |
+| U                    |                            2.21875 |
+ 
+ 
 
 # Lasso Logistic Model 
 
@@ -251,12 +224,111 @@ Table: Accuracy of the Lasso logistic model \label{logit_accuracy}
 |  Test accuracy      |   0.8188               | 0.5021          |
 
 
+# Lasso Linear Model
 
-# Further steps 
+We start with a simple linear regression model $y = X \beta + \varepsilon$, where $y \in \mathbb{R}^N$ is the predicted participation in on-job or off-job training,  $X \in \mathbb{R}^{N \times k}$ are the vectors of covariates, and $\varepsilon \in \mathbb{R}^N$ is the residual with the standard assumptions of OLS. To select the set of covariates with the strongest predictive power from our set of 180 variables, we apply the Least absolute shrinkage and selection operator (Lasso) that was first proposed by @tibshirani1996regression. We add the Lasso penalty equal to $\sum_k |\beta_k|$ to our linear model. The Lasso linear estimator $\hat{\beta}$ is then given by
 
-Which results can be expected? What is new? Where lies the progress for science? In what way can scientific discussion proceed / be stimulated by the thesis?
+$$ \hat{\beta}_\lambda = argmin\{\sum_i (y_i-x_i^T\beta)^2  + \lambda\sum_k |\beta_k|\}  $$ {#eq:lasso}
+
+That is, we minimize the sum of squared residuals but the Lasso penalty puts a cost at every $\hat{\beta} \neq 0$ and thus, we penalize complexity and avoid over-fitting the model. $\lambda >0$ is the penalty weight or the *tuning parameter*. 
+
+## Training the Model 
+
+Figure \ref{fig:lasso} shows the lasso regularization path of candidate models $\hat{\beta}_1$ ... $\hat{\beta}_t$ that we obtained by minimizing Equation @eq:lasso over a sequence of tuning parameters $\lambda_1 < \lambda_2 < ... < \lambda_T$ with on-the-job training and open education as dependent variable respectively. The vertical axis contains different levels of $\hat{\beta}$. The horizontal axis contains different levels for $\lambda$. Each vertical section along the horizontal axis, represents one candidate model. Moving from higher to lower $\lambda$, the algorithm includes more nonzero $\hat{\beta}_k$ and the model becomes more complex. To find the optimal value for $\lambda$ we use *5-fold cross- validation*. We split the data into five random, evenly sized subsets and derive the lasso paths $\hat{\beta}_1^k$ ... $\hat{\beta}_T^k$ on each of the folds but the fifth fold to train the models. Then we use the left out fifhts fold to obtain the out-of-sample error for each candidate model. The $\hat{\lambda}_t$ that minimizes the out-of-sample error is selected as the optimal $\hat{\lambda}_t$.     
+
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{On-the-job training}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Open education}
+\end{subfigure}
+\caption{Linear model: Lasso path}
+\label{fig:lasso}
+\end{figure}
+![](..\Results\Plots\lasso_path_onJob.png){ width=50% }
+![](..\Results\Plots\lasso_path_openeduc.png){ width=50% }
+\vspace{0.5cm}
 
 
+For the dependent variable on-the-job training, we obtain the optimal $\lambda = 0.0032$. For open education, we obtain the same optimal $\lambda = 0.0032$.
+
+
+## Variable Selection
+
+When estimating the linear model using the optimal Lasso parameter for the number of on-job trainings a person has participated in in the past year, the Lasso regularization identifies 148 columns^[Including country and industry controls]  with non-zero predictive power. The coefficients are presented in Table \ref{lin_reg_onjob}.
+We distinguish between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The reference group is *skill_4* which captures elementary occupations. All skill dummies coefficients are non-zero in the Lasso model. Individuals working in high-skilled jobs have fewer trainings than individuals in elementary jobs. Working in semi-skilled jobs reduces the number of on-the-job trainings as well but less strongly than for high-skilled jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of trainings compared to working in elementary occupations. 
+
+The number of on-the-job trainings is the strongest affected positively the higher the number of years the individual has worked. An increase of the working years (*c_q09*) by 4 years results in an increase of the trainings by approximately one training. Also, the higher the educational degree and the longer the individual had to study to get the current job, the higher the number of trainings she received in the last year (*yrsget* and *edcat8_Tertiary – research degree (ISCED 6)*). 
+Jobs in which individuals have to keep up to date with new products or developments every day, *d_q13c_Every day*, imply that the individual participate in more on-the-job trainings.
+A higher willingness to learn or the wish to increase their skills and knowledge or if the respondent perceives her formal education as very useful for the current job increases the amount of trainings. Another positive effect can be observed if the individual works in a larger firm and if she supervises other employees.  
+
+Never using a programming language at work, *g_q05g_Never*, while using the internet for research purposes every day, *g_q05c_Every day*, have positive effects on the number of on-the-job trainings. 
+
+When increasing the age of the individual, the number of on-job trainings participated in in the last year decreases. The number of trainings is also negatively correlated with the straightforward usage of a PC at work in general, *g_q06_Straightforward* and *g_q04_Yes*, and with the usage of spreadsheed software daily for the job, *g_q05e_ every day*, specifically. Furthermore, if the job requires to keep up to date with new products or services less than once in a month (*d_q13c_Less than once a month*) the number of trainings are lower. A lower education and the subjective feeling that the formal education is not useful for the current job further decrease the number of trainings an individual received in the past year.  
+ 
+Moving on to the number of open courses the individuals participated in in the past year, the linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls] .
+The coefficients indicate that working in a high-skilled job, *skill_1*, or working in a semi-skilled blue-collar occupation increase the number of open courses compared to working in elementray occupations. Working in a semi-skilled white-collar occupation, *skill_2*, has a small negative effect on the number of open courses. 
+
+We observe the strongest increase in the number of open courses if the employee never uses spreadsheets at work, *g_q05e_Never*, and if the employee uses a computer in general for her work, *g_q04_Yes*. An increase in the number of years the individual had been employed by 3 years, increases the number of off-job trainings by one training (*c_q09*). Individuals who are working in firms with more than 1000 people are also participating in 0.28 more trainings than individuals who are working in smaller firms (*d_q06a_More than 1000 people*). In general, individuals with lower educational qualifications and who have no contract or are serving an apprenticeship participate in more open courses. Nonetheless, the willingness to learn is also an important factor for the number of open courses as well as the fear of loosing the current job. 
+
+As for on-job trainings, we observe a negative correlation between the number of open courses and age of the individual. An increase in age by 10 years reduces the number of trainings by 1.5 trainings. 
+We observe another negative effect if the individual seldom or never uses the PC at work, e.g. never conducts work-related transactions over the internet, *g_q05d_Never* or if the individual never participates in real-time discussions on the internet as the negative coefficient of *g_q05h_Never* indicates. If the individual perceives her formal education as somewhat useful for the current job, *b_q10c_Somewhat useful*, the number of open courses decreases.
+
+Overall, the regression results indicate that individuals with a higher education as well as the need to always be up to date and using the computer daily participate in more on-the-job trainings and open courses. But the results also imply that the number of trainings is reduced if the individual works in a high-skilled job. This is somewhat counterintuitive also when recalling the distribution of trainings among job classifications. Figure \ref{fig:JobClass_training} clearly indicates that individuals working in high-skilled jobs receive more trainings. These discrepancies suggest that the model, although regularized, does not yield a good fit. The perfomance of hte models will be analyzed in the next step.
+
+
+## Out-of-Sample Evaluation Results
+
+In this section, we show the performance of the Lasso regularized linear regression compared to an Ordinary-Least-Squares (OLS) regression.
+We compare the out-of-sample deviance, $R^2$, to evaluate the performance of the models. The out-of-sample deviance is the deviance between the model's prediction after being trained on the training data and the new data, namely the test data (see eq:OOS). The lower the out-of-sample deviance, the higher is the out-of-sample performance and thus the better the model [@Taddy.2019].
+
+$$ dev_{OOS}(\hat{\beta}) = \sum_i (n+i)^{n+m} (y_i-x_i'\hat{\beta})^2  $$ {#eq:OOS}
+
+For the linear models, we can see in Figure \ref{fig:oos} that the $R^2$ for the Lasso regularized model has a higher mean than the OLS model. Hence, the out-of-sample performance of model with the Lasso penalty is better as it allows for less noise in the data and reduces overfitting. The same holds for the models for off-job trainings as we show in Figure \ref{fig:oos}. The out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
+The regularized models achieve higher accuracies compared to the OLS models. Table \ref{tab:lin_accuracy} shows that for on-the-job trainings, the Lasso linear model achieves a test accuracy of 0.04921 which is slightly higher than the linear model that yields 0.04696 test accuracy.
+Turning to open courses it is also evident that the regularized model performs better on new data than the unregularized model. However, both the test accuracy of the OLS model and the Lasso regularized model are negative. This implies that the null model performs better than the model that includes regressors. This is line with the counterintuitive regression results in the previous chapter. Hence, in a next step we will apply a a logistic model as this might fit the data better than a linear model.
+
+\vspace{0.5cm}
+\begin{figure}[!h]
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{On-the-job training}
+\label{oos_onjob}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\caption{Open education}
+\label{oos_open}
+\end{subfigure}
+\caption{Linear model: Out-of-sample validation}
+\label{fig:oos}
+\end{figure}
+![Linear model: On-job training\label{oos_onjob}](..\Results\Plots\outofsample_validation_onJob.png){ width=50% } 
+![Linear model: Open education\label{oos_open}](..\Results\Plots\outofsample_validation_openEduc.png){ width=50% }
+\vspace{0.5cm}
+
+
+Table: Accuracy of the Lasso linear model \label{tab:lin_accuracy}
+
+|                     |   Lasso linear model | OLS  |
+|--------------------:|-----------------------:|:----------------|
+|**On-job training**  |                        |                 |
+|  Training accuracy  |     0.0755             |  0.0758 |
+|  Test accuracy      |   0.0467               | 0.0441          |
+|---------------------|------------------------|-----------------|
+|**Open education**   |                        |                 |                                  
+|  Training accuracy  |    0.0967              |        0.0989   |
+|  Test accuracy      |   -0.0071               | -0.0096         |
+
+
+
+# Conclusio and Future Research
+
+This paper illustrates the use of Lasso regulariation to identify characteristics that influece the probability of receiving training. It is often claimed thate mployees who i.e. worked in non-programming jobs before could try to improve their job opportunties by reskilling and acquiring programming skills using MOOC [@WorldEconomicForum.October2020; @Garrido.2016]. However, we find that people in higher skilled occupation, with a higher educational level, and who require computer knowledge generally receive more training. Thus trainings cannot be seen as a stepping stone to move from middle skilled occupations to higher skilled occupations. Both on-the-job traings and open education serve highly skilled workers. This supports our hypothesis that open courses are unable to provide extensive retraining as they already require a decent level of ICT skills.  
+
+Applying a Lasso logistic model to analyze training partcipation represent a great starting point for future research. Due to the lockdowns and economic shutdowns during the Covid-19 pandemic larger as well as smaller businesses are facing bancruptcy or had to reduce their workforce or limit the number of new hirings to reduce costs [@barrero2020covid]. The pandemic also pushed digitization and the adoption of robots and thus replacing workforce [@zeng2020high]. Especiall the first lock-down has led to a massive increase in Google searches for MOOCs. The aim of our future research is to find out whether this demand shock led to any changes in the characteristics of people that partcipate in trainings. The OECD will launch a second cycle of the PIAAC suvey for 2022 to 2023. With this data, we can compare pre- and post-Covid-19 trends in training participation. 
 
 
 # Appendix A
