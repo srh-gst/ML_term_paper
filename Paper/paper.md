@@ -45,14 +45,14 @@ The original dataset comprises 1,460 columns with 230,691 observations of respon
 
 In the reduced cross-sectional dataset we have answers of 230,691 respondents to 52 questions. The 52 variables comprise information on the individual's background information, her past and ongoing formal or informal education, information on training activities, information on ICT skill use at work and the respective extensive and intensive margin, her subjective job requirements, information on her curent job and information on monthly income. We transform all categorical variables in the dataset into dummies. We thus obtain a total sum of variables of 180 for the final dataset.
 
-The dataset is well balanced in terms of age and gender of the respondents. 122,830 of the 230,691 respondents are female and 107,859 are male (see Figure \ref{fig:age_gender_distr}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{fig:age_gender_distr}).
+The dataset is well balanced in terms of age and gender of the respondents. 122,830 of the 230,691 respondents are female and 107,859 are male (see Figure \ref{gender_distr}). The age of the respondents is evenly distributed between the ages 16 to 64 with a female mean age of 39.95 years and male mean age of 39.38 (see Figure \ref{age_distr}).
 
 The key variables of this study are the the skill classification of the individual's job and her trainings comprising on-the-job training and distance or open training courses. On-the-job trainings comprise all trainings that are organized by the employer for her employees. Such trainings take place during working time and are often conducted by internal experts of the respective topic [@acemoglu2011skills]. Open or distance courses, on the other hand, comprise methods of learning and teaching without or only little face-to-face interactions and separations in time and space, e.g. MOOCs [@Jung.2019].  In the PIAAC survey, the respective questions for these two types of trainings are the following: *How many of open or distance education activities did you participate in?* and *How many of organized sessions for on-the-job training or training by supervisors or co-workers did you participate in?*. For the logistic model, the questions are: *During the last 12 months, have you participated in courses conducted through open or distance education?* and *During the last 12 months, have you attended any organized sessions for on-the-job training or training by supervisors or co-workers?*. On average individuals participated in 3.25 on-the-job trainings and in 2.52 open courses in the past 12 months.
 
-For the skill classification of the individual's job, we use the PIAAC survey skill classification which attributes every job to a certain skill class. This classification distinguishes between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The number of respondents working in skilled white-collar occupations is the highest with 73,090 respondents. 53,756 respondents work in semi-skilled white-collar occupations and 38,238 are working in semi-skilled blue-collar occupations. Occupations classified as elementary amount to 19,363 respondents (see Figure ref{fig:JobClass_distr}).
+For the skill classification of the individual's job, we use the PIAAC survey skill classification which attributes every job to a certain skill class. This classification distinguishes between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The number of respondents working in skilled white-collar occupations is the highest with 73,090 respondents. 53,756 respondents work in semi-skilled white-collar occupations and 38,238 are working in semi-skilled blue-collar occupations. Occupations classified as elementary amount to 19,363 respondents (see Figure \ref{jobClass}).
 
-Job skill classifications are evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Figure \ref{fig:JobClass_age}). Looking at the distribution of on-job trainings and occupational classification shows that individuals in skilled or semi-skilled white-collar occupations received more trainings in the last year than blue-collar occupations (see figure \ref{fig:JobClass_training}). On average, individuals working in skilled white-collar occupations participated in 3.6 on-job trainings and while individuals in semi-skilled white-collar occupations participated in on average approximately 3 on-job trainings. Individuals working in elementary occupations received the least on-job trainings with on average 2.58 trainings in the last year (see Table \ref{tab:mean_onJob_Class}). 
-The distribution of the open courses among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{fig:JobClass_training}). The average number of off-the-job trainings for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). The skeweness in the distribution of both open courses and on-the-job trainings towards skilled white-collar occupations is evident. 
+Job skill classifications are evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Figure \ref{jobClass_age}). Looking at the distribution of on-job trainings and occupational classification shows that individuals in skilled or semi-skilled white-collar occupations received more trainings in the last year than blue-collar occupations (see Figure \ref{jobClass_onJob}). On average, individuals working in skilled white-collar occupations participated in 3.6 on-job trainings and while individuals in semi-skilled white-collar occupations participated in on average approximately 3 on-job trainings. Individuals working in elementary occupations received the least on-job trainings with on average 2.58 trainings in the last year (see Table \ref{tab:mean_onJob_Class}). 
+The distribution of the open courses among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{jobClass_open}). The average number of open courses for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). The skeweness in the distribution of both open courses and on-the-job trainings towards skilled white-collar occupations is evident. 
 
 <!---
 Regressing separately the number of open courses and number of on-the-job-trainings on gender, years of education to get the current job, number of children, occupational skill level and ICT skill use at work using Ordinary Least Squares (OLS), reveals positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training and distance or open educational training. However, as we have a dataset that provides many different information on the individuals, we want to be able to include as many variables and thus information as possible in the regressions. We start with the analysis of the factors that drive individuals' decision to participate in trainings. In the next chapter we therefore explain and apply the Lasso regression to a logistic model.
@@ -66,10 +66,13 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Distribution of gender within the PIAAC dataset.\par}
 \end{minipage}
+\label{gender_distr}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Age distribution}
+\medskip 
+\label{age_distr}
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Distribution of age within the PIAAC dataset.\par}
 \end{minipage}
@@ -86,13 +89,15 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Classification of jobs}
+\label{jobClass}
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Skill classification of jobs into four skill categories with category 1 being the highest skill level.\par}
 \end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{Age and Classification of jobs}
+\caption{Age and classification of jobs}
+\label{jobClass_age}
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Distribution of age among the skill classification of jobs within the PIAAC dataset.\par}
 \end{minipage}
@@ -114,6 +119,7 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Distribution of the number of on-the-job trainings and the skill classification of jobs within the PIAAC dataset.\par}
 \end{minipage}
+\label{jobClass_onJob}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
@@ -121,6 +127,7 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{minipage}{0.2\textwidth} 
 {\footnotesize Distribution of the number of open courses and the skill classification of jobs within the PIAAC dataset.\par}
 \end{minipage}
+\label{jobClass_open}
 \end{subfigure}
 \caption{Classification of jobs and trainings}
 \label{fig:JobClass_training}
@@ -142,10 +149,9 @@ Table: Average number of on-the-job trainings per job classification \label{tab:
 | A                    |                          2.58834 |
 | N                    |                          3.61111 |
 | U                    |                          3.28139 |
+  :Average number of on-the-job trainings per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.
   
-  
-  
-
+ 
 Table: Average number of open training courses per job classification \label{tab:mean_offJob_Class}
 
 | Job classification   | Mean number of open training courses |
@@ -157,8 +163,7 @@ Table: Average number of open training courses per job classification \label{tab
 | A                    |                            1.99916 |
 | N                    |                            3.16867 |
 | U                    |                            2.21875 |
- 
- 
+ :Average number of open courses per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.
 
 # Lasso Logistic Model 
 
@@ -181,10 +186,16 @@ This leads to an optimal $\lambda$  of 29.764 for on-the-job training and an opt
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{On-the-job training}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Lasso path of the candidate models for on-the-job training.\par}
+\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Open education}
+\begin{minipage}{0.2\textwidth} 
+{\footnotesize Lasso path of the candidate models for open education.\par}
+\end{minipage}
 \end{subfigure}
 \caption{Logistic model: Lasso path}
 \label{lasso_logit}
