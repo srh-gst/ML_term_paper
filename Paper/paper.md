@@ -6,7 +6,7 @@ output:
     fig_caption: true
     latex_engine: pdflatex
     template: header.tex
-title: "Training as means of reskilling and closing the college wage gap? Evidence from the PIAAC survey"
+title: "Training as means of reskilling and closing the college  gap? Evidence from the PIAAC survey"
 author:
 - name: Sarah Gust
   affiliation: ifo Institute at the University of Munich, [gust@ifo.de](mailto:gust@ifo.de)
@@ -52,7 +52,7 @@ The key variables of this study are the the skill classification of the individu
 For the skill classification of the individual's job, we use the PIAAC survey skill classification which attributes every job to a certain skill class. This classification distinguishes between four different skill levels: elementary occupations (*skill_4*), semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*). The number of respondents working in skilled white-collar occupations is the highest with 73,090 respondents. 53,756 respondents work in semi-skilled white-collar occupations and 38,238 are working in semi-skilled blue-collar occupations. Occupations classified as elementary amount to 19,363 respondents (see Figure \ref{jobClass}).
 
 Job skill classifications are evenly distributed across age groups and gender. However, respondents working in semi-skilled white-collar occupations are slightly younger than those working in skilled occupations or semi-skilled blue-collar occupations (see Figure \ref{jobClass_age}). Looking at the distribution of on-job trainings and occupational classification shows that individuals in skilled or semi-skilled white-collar occupations received more trainings in the last year than blue-collar occupations (see Figure \ref{jobClass_onJob}). On average, individuals working in skilled white-collar occupations participated in 3.6 on-job trainings and while individuals in semi-skilled white-collar occupations participated in on average approximately 3 on-job trainings. Individuals working in elementary occupations received the least on-job trainings with on average 2.58 trainings in the last year (see Table \ref{tab:mean_onJob_Class}). 
-The distribution of the open courses among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{jobClass_open}). The average number of open courses for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). The skeweness in the distribution of both open courses and on-the-job trainings towards skilled white-collar occupations is evident. 
+The distribution of the open courses among the job classifications is similar although the averages are lower for all job classifications (see Figure \ref{jobClass_open}). The average number of open courses for individuals working in skilled white-collar occupations amounts to 2.8 trainings, while individuals in semi-skilled white- or blue-collar occupations received on average 2.2 trainings in the past year. Again, individuals working in elementary jobs receive the least number of off-job trainings on average (see Table \ref{tab:mean_offJob_Class}). The skeweness in the distribution of both open courses and on-the-job trainings towards skilled white-collar occupations is evident.
 
 <!---
 Regressing separately the number of open courses and number of on-the-job-trainings on gender, years of education to get the current job, number of children, occupational skill level and ICT skill use at work using Ordinary Least Squares (OLS), reveals positive correlations between the high-skilled jobs and the number of trainings respondents participated in. This holds true for on-the-job-training and distance or open educational training. However, as we have a dataset that provides many different information on the individuals, we want to be able to include as many variables and thus information as possible in the regressions. We start with the analysis of the factors that drive individuals' decision to participate in trainings. In the next chapter we therefore explain and apply the Lasso regression to a logistic model.
@@ -62,26 +62,26 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Gender distribution}
-\medskip 
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Distribution of gender within the PIAAC dataset.\par}
-\end{minipage}
 \label{gender_distr}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Age distribution}
-\medskip 
 \label{age_distr}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Distribution of age within the PIAAC dataset.\par}
-\end{minipage}
 \end{subfigure}
 \caption{Distribution of age and gender}
 \label{fig:age_gender_distr}
 \end{figure}
 ![](..\Results\Plots\barplot_gender.png){ width=50% } 
+\medskip 
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Distribution of gender within the PIAAC dataset.\par}
+\end{minipage}
 ![](..\Results\Plots\hist_age.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Distribution of age within the PIAAC dataset.\par}
+\end{minipage}
 \vspace{0.5cm}
 
 
@@ -90,23 +90,25 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Classification of jobs}
 \label{jobClass}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Skill classification of jobs into four skill categories with category 1 being the highest skill level.\par}
-\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Age and classification of jobs}
 \label{jobClass_age}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Distribution of age among the skill classification of jobs within the PIAAC dataset.\par}
-\end{minipage}
 \end{subfigure}
 \caption{Distribution of occupational classifications}
 \label{fig:JobClass_distr}
 \end{figure}
 ![](..\Results\Plots\barplot_job_classification.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Skill classification of occupations into four categories with category 1 representing skilled white-collar occupations.\par}
+\end{minipage}
 ![](..\Results\Plots\box_age_job_classification.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Distribution of age among the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 \vspace{0.5cm}
 
 
@@ -116,24 +118,26 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{On-the-job trainings and classification of jobs}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Distribution of the number of on-the-job trainings and the skill classification of jobs within the PIAAC dataset.\par}
-\end{minipage}
 \label{jobClass_onJob}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Open courses and classification of jobs}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Distribution of the number of open courses and the skill classification of jobs within the PIAAC dataset.\par}
-\end{minipage}
 \label{jobClass_open}
 \end{subfigure}
 \caption{Classification of jobs and trainings}
 \label{fig:JobClass_training}
 \end{figure}
 ![](..\Results\Plots\box_OntheJob_classification.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Distribution of the number of on-the-job trainings and the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 ![](..\Results\Plots\box_OpenJob_classification.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Distribution of the number of open courses and the skill classification of jobs within the PIAAC dataset.\par}
+\end{minipage}
 \vspace{0.5cm}
 
 
@@ -149,8 +153,10 @@ Table: Average number of on-the-job trainings per job classification \label{tab:
 | A                    |                          2.58834 |
 | N                    |                          3.61111 |
 | U                    |                          3.28139 |
-  :Average number of on-the-job trainings per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.
-  
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Average number of on-the-job trainings per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
+\end{minipage}
+ 
  
 Table: Average number of open training courses per job classification \label{tab:mean_offJob_Class}
 
@@ -163,7 +169,9 @@ Table: Average number of open training courses per job classification \label{tab
 | A                    |                            1.99916 |
 | N                    |                            3.16867 |
 | U                    |                            2.21875 |
- :Average number of open courses per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Average number of open courses per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
+\end{minipage}
 
 # Lasso Logistic Model 
 
@@ -186,22 +194,24 @@ This leads to an optimal $\lambda$  of 29.764 for on-the-job training and an opt
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{On-the-job training}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Lasso path of the candidate models for on-the-job training.\par}
-\end{minipage}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
 \caption{Open education}
-\begin{minipage}{0.2\textwidth} 
-{\footnotesize Lasso path of the candidate models for open education.\par}
-\end{minipage}
 \end{subfigure}
 \caption{Logistic model: Lasso path}
 \label{lasso_logit}
 \end{figure}
 ![](..\Results\Plots\lasso_logit_on_job.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Lasso path of the candidate logit models for on-the-job training.}
+\end{minipage}
 ![](..\Results\Plots\lasso_logit_open_educ.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Lasso path of the candidate logit models for open education.}
+\end{minipage}
 \vspace{0.5cm}
 
 ## Variable Selection
@@ -218,7 +228,7 @@ We can draw two main conclusions from these results. First, people in higher ski
 
 ## Accuracy of the Model 
 
-Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusion_onjob} presents the confusion matrix for on the job training. 10929 are true negative prediction and there are 88 true positive predictions. The model yields 1200 false negative predictions and 68 false positive predictions. We present the confision matrix for open education in Figure \ref{confusion_open}. For this model, we obtain 10965 true positive predictions and 64 true negative predictions. 1224 + 32 are incorrect predictions.      
+Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusion_onjob} presents the confusion matrix for on the job training. 10929 are true negative prediction and there are 88 true positive predictions. The model yields 1200 false negative predictions and 68 false positive predictions. We present the confusion matrix for open education in Figure \ref{confusion_open}. For this model, we obtain 10965 true positive predictions and 64 true negative predictions. 1224 + 32 are incorrect predictions.      
 
 
 \vspace{0.5cm}
@@ -236,7 +246,15 @@ Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusio
 \label{confusion_logit}
 \end{figure}
 ![](..\Results\Plots\confusion_on_job.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize The confusion matrix of the regularized logit model for on-the-job training shows the accuracy of the model with 10929 true negative and 88 true positive predictions.}
+\end{minipage}
 ![](..\Results\Plots\confusion_open_educ.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize The confusion matrix of the regularized logit model for open courses shows the accuracy of the model with 10965 true positive and 64 true negative predictions.}
+\end{minipage}
 \vspace{0.5cm}
 
 In Table \ref{logit_accuracy}, we compare the accuracy of the Lasso logistic model with the unregularized logistic model. The test accuracy of the logistic model is 0.4858 and the test accuracy of the Lasso logistic model is  0.7292 for on-job training. The test accuracy for open education is 0.5021 for the logistic model and reaches 0.8188 with the Lasso logistic model. With the Lasso penalty we excluded unnecessary variables from our Logistic regression that caused over-fitting. The Lasso-regularized logistic model performs much better for both outcome variables. 
@@ -252,6 +270,10 @@ Table: Accuracy of the Lasso logistic model \label{logit_accuracy}
 |**Open education**   |                        |                 |                                  
 |  Training accuracy  |   0.8185               | 0.4996          |
 |  Test accuracy      |   0.8188               | 0.5021          |
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize The table shows the accuracy of the Lasso logistic model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for both training and test data.}
+\end{minipage}
 
 
 # Lasso Linear Model
@@ -273,13 +295,21 @@ Figure \ref{fig:lasso} shows the lasso regularization path of the linear candida
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{Open education}
+\caption{Open courses}
 \end{subfigure}
 \caption{Linear model: Lasso path}
 \label{fig:lasso}
 \end{figure}
 ![](..\Results\Plots\lasso_path_onJob.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Lasso path of the candidate linear models for on-the-job training.}
+\end{minipage}
 ![](..\Results\Plots\lasso_path_openeduc.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Lasso path of the candidate linear models for open courses.}
+\end{minipage}
 \vspace{0.5cm}
 
 
@@ -304,7 +334,7 @@ To assess the performance, we compare the out-of-sample deviance of the Lasso re
 
 $$ dev_{OOS}(\hat{\beta}) = \sum_i (n+i)^{n+m} (y_i-x_i'\hat{\beta})^2  $$ {#eq:OOS}
 
-For the linear models, we can see in Figure \ref{fig:oos} that the $R^2$ for the Lasso regularized model has a higher mean than the OLS model. Hence, the out-of-sample performance of model with the Lasso penalty is better as it allows for less noise in the data and reduces overfitting. The same holds for the models for off-job trainings as we show in Figure \ref{fig:oos}. The out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
+For the linear models, we can see in Figure \ref{oos_onjob} that the $R^2$ for the Lasso regularized model has a higher mean than the OLS model. Hence, the out-of-sample performance of model with the Lasso penalty is better as it allows for less noise in the data and reduces overfitting. The same holds for the models for open courses as we show in Figure \ref{oos_open}. The out-of-sample performance of the regularized model is higher than that of the linear model without regularization. This indicates that the regularization achieves a better out-of-sample fit than the OLS model.
 The regularized models achieve higher accuracies compared to the OLS models. Table \ref{tab:lin_accuracy} shows that for on-the-job trainings, the Lasso linear model achieves a test accuracy of 0.04921 which is slightly higher than the linear model that yields 0.04696 test accuracy.
 Turning to open courses it is also evident that the regularized model performs better on new data than the unregularized model. However, both the test accuracy of the OLS model and the Lasso regularized model are negative. This implies that the null model performs better than the model that includes regressors. This is line with the counterintuitive regression results in the previous chapter. Also, the accuracy results of the Lasso regularized linear model are much lower than those of the Lasso logistic model (test accuracy = 0.7292 for on-the-job training and 0.8188 for open education). Therefore, we rely on the Lasso logistic model. 
 
@@ -322,8 +352,16 @@ Turning to open courses it is also evident that the regularized model performs b
 \caption{Linear model: Out-of-sample validation}
 \label{fig:oos}
 \end{figure}
-![Linear model: On-job training\label{oos_onjob}](..\Results\Plots\outofsample_validation_onJob.png){ width=50% } 
-![Linear model: Open education\label{oos_open}](..\Results\Plots\outofsample_validation_openEduc.png){ width=50% }
+![](..\Results\Plots\outofsample_validation_onJob.png){ width=50% } 
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Out-of-sample performance of the Lasso regularized linear model compared to the linear model for on-the-job training.}
+\end{minipage}
+![](..\Results\Plots\outofsample_validation_openEduc.png){ width=50% }
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize Out-of-sample performance of the Lasso regularized linear model compared to the linear model for open education.}
+\end{minipage}
 \vspace{0.5cm}
 
 
@@ -338,8 +376,10 @@ Table: Accuracy of the Lasso linear model \label{tab:lin_accuracy}
 |**Open education**   |                        |                 |                                  
 |  Training accuracy  |    0.0967              |        0.0989   |
 |  Test accuracy      |   -0.0071               | -0.0096         |
-
-
+\medskip
+\begin{minipage}{0.4\textwidth} 
+{\scriptsize The table shows the accuracy of the Lasso linear model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for the test data.}
+\end{minipage}
 
 # Conclusio and Future Research
 
