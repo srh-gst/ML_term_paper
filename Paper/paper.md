@@ -120,6 +120,7 @@ Regressing separately the number of open courses and number of on-the-job-traini
 
 
 Table: Average number of on-the-job trainings per skill level \label{tab:mean_onJob_Class}
+\medskip
 
 | Skill level   |  Mean number |
 |:---------------------|---------------------------------:|
@@ -136,6 +137,7 @@ Table: Average number of on-the-job trainings per skill level \label{tab:mean_on
  
  
 Table: Average number of open training courses per skill level \label{tab:mean_offJob_Class}
+\medskip
 
 | Skill level   | Mean number|
 |:---------------------|-----------------------------------:|
@@ -228,6 +230,7 @@ Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusio
 In Table \ref{logit_accuracy}, we compare the accuracy of the Lasso logistic model with the unregularized logistic model. The test accuracy of the logistic model is 0.4858 and the test accuracy of the Lasso logistic model is 0.7292 for on-job training. The test accuracy for open education is 0.5021 for the logistic model and reaches 0.8188 with the Lasso logistic model. With the Lasso penalty we excluded unnecessary variables from our Logistic regression that caused over-fitting. The Lasso-regularized logistic model performs much better for both outcome variables. 
 
 Table: Accuracy of the Lasso logistic model \label{logit_accuracy}
+\medskip
 
 |                     |   Lasso logistic model | Logistic model  |
 |--------------------:|-----------------------:|:----------------|
@@ -324,6 +327,7 @@ Turning to open courses it is also evident that the regularized model performs b
 
 
 Table: Accuracy of the Lasso linear model \label{tab:lin_accuracy}
+\medskip
 
 |                     |   Lasso linear model | OLS  |
 |--------------------:|-----------------------:|:----------------|
@@ -355,6 +359,7 @@ Applying a Lasso logistic model to analyze training participation represent a gr
 \footnotesize
 
 Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
+\medskip
 
 |     |   Coefficients | Feature                                                                      |
 |----:|---------------:|:-----------------------------------------------------------------------------|
@@ -465,6 +470,7 @@ Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
 \end{minipage}
 
 Table: Lasso logistic regression for off-job training \label{log_reg_open}
+\medskip
 
 |    |   Coefficients | Feature                                                                        |
 |---:|---------------:|:-------------------------------------------------------------------------------|
@@ -535,6 +541,7 @@ Table: Lasso logistic regression for off-job training \label{log_reg_open}
 
 
 Table: Lasso linear regression for on-job training \label{lin_reg_onjob}
+\medskip
 
 |     |   Coefficients | Feature                                                                               |
 |----:|---------------:|:--------------------------------------------------------------------------------------|
@@ -644,6 +651,7 @@ Table: Lasso linear regression for on-job training \label{lin_reg_onjob}
 \end{minipage}
 
 Table: Lasso linear regression for off-job training \label{lin_reg_open}
+\medskip
 
 |     |   Coefficients | Feature                                                                               |
 |----:|---------------:|:--------------------------------------------------------------------------------------|
