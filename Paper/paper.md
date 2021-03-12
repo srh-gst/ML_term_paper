@@ -160,7 +160,7 @@ $$  \hat{\theta}_\lambda = argmin (-l_N(\theta)) + \lambda\sum_k |\theta^k| $$ {
 
 where $l_N(\theta))$ is the log-likelihood function
 
-$$ l_N(\theta)) = \sum_{i}[y_i x_i \theta -log(1+e^{x_i \theta})] $$
+$$ l_N(\theta)) = \sum_{i}[y_i x_i \theta -log(1+e^{x_i \theta})] $$ {#eq:likelihood}
 
 $\sum_k |\theta^k|$ is the lasso penalty. $\lambda >0$ is the penalty weight or the *tuning parameter*. 
 
@@ -282,7 +282,7 @@ Figure \ref{fig:lasso} shows the lasso regularization path of the linear candida
 
 ## Variable Selection
 
-When estimating the linear model using the optimal Lasso parameter for the number of on-the-job trainings a person has participated in the past year, the Lasso regularization identifies 148 columns^[Including country and industry controls]  with non-zero predictive power. Using the number of open courses as dependent variables, linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls]. The coefficients are presented in Table \ref{lin_reg_onjob} and Table \ref{lin_reg_offjob} respectively.
+When estimating the linear model using the optimal Lasso parameter for the number of on-the-job trainings a person has participated in the past year, the Lasso regularization identifies 148 columns^[Including country and industry controls]  with non-zero predictive power. Using the number of open courses as dependent variables, linear regression using lasso regularization comprises 150 coefficients^[Including country and industry controls]. The coefficients are presented in Table \ref{lin_reg_onjob} and Table \ref{lin_reg_open} respectively.
 The coefficients of the skill dummies for semi skilled blue-collar workers (*skill_3*), semi-skilled white-collar workers (*skill_2*), and skilled occupations (*skill_1*) are non-zero in both Lasso regularized models. The reference group are elementary occupations.
 
 Surprisingly, working in high-skilled jobs reduces on-the-job trainings compared to individuals in elementary jobs. Working in semi-skilled jobs reduces the number of on-the-job trainings as well but less strongly than for high-skilled jobs. Individuals in semi-skilled blue-collar occupations have the least reduction in the number of on-the-job trainings compared to working in elementary occupations. 
