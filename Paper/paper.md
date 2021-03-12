@@ -6,7 +6,8 @@ output:
     fig_caption: true
     latex_engine: pdflatex
     template: header.tex
-title: "Training as means of reskilling and closing the college  gap? Evidence from the PIAAC survey"
+    numbersections: true
+title: "Training as means of catching up? A Lasso approach"
 author:
 - name: Sarah Gust
   affiliation: ifo Institute at the University of Munich, [gust@ifo.de](mailto:gust@ifo.de)
@@ -73,14 +74,9 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \label{fig:age_gender_distr}
 \end{figure}
 ![](..\Results\Plots\barplot_gender.png){ width=50% } 
-\medskip 
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Distribution of gender within the PIAAC dataset.\par}
-\end{minipage}
 ![](..\Results\Plots\hist_age.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Distribution of age within the PIAAC dataset.\par}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The figures show the distribution of gender and age within the PIAAC dataset.\par}
 \end{minipage}
 \vspace{0.5cm}
 
@@ -96,28 +92,21 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \caption{Age and classification of jobs}
 \label{jobClass_age}
 \end{subfigure}
-\caption{Distribution of occupational classifications}
+\caption{Distribution of the skill levels}
 \label{fig:JobClass_distr}
 \end{figure}
 ![](..\Results\Plots\barplot_job_classification.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Skill classification of occupations into four categories with category 1 representing skilled white-collar occupations.\par}
-\end{minipage}
 ![](..\Results\Plots\box_age_job_classification.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Distribution of age among the skill classification of jobs within the PIAAC dataset.\par}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The figures show number of observation in skill category within the PIAAC dataset and the distribution of age among the skill classifications.\par}
 \end{minipage}
 \vspace{0.5cm}
-
-
 
 
 \vspace{0.5cm}
 \begin{figure}[!h]
 \begin{subfigure}[t]{0.4\textwidth}
-\caption{On-the-job trainings and classification of jobs}
+\caption{On-the-job trainings and skill levels}
 \label{jobClass_onJob}
 \end{subfigure}
 \hfill
@@ -129,22 +118,17 @@ Regressing separately the number of open courses and number of on-the-job-traini
 \label{fig:JobClass_training}
 \end{figure}
 ![](..\Results\Plots\box_OntheJob_classification.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Distribution of the number of on-the-job trainings and the skill classification of jobs within the PIAAC dataset.\par}
-\end{minipage}
 ![](..\Results\Plots\box_OpenJob_classification.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Distribution of the number of open courses and the skill classification of jobs within the PIAAC dataset.\par}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The figures show the distribution of the number of on-the-job trainings and open courses among the skill classififcations in the PIAAC dataset.\par}
 \end{minipage}
 \vspace{0.5cm}
 
 
 
-Table: Average number of on-the-job trainings per job classification \label{tab:mean_onJob_Class}
+Table: Average number of on-the-job trainings per skill level \label{tab:mean_onJob_Class}
 
-| Job classification   |  Mean number of on-the-job trainings |
+| Skill level   |  Mean number |
 |:---------------------|---------------------------------:|
 | 1                    |                          3.66353 |
 | 2                    |                          2.95611 |
@@ -153,14 +137,14 @@ Table: Average number of on-the-job trainings per job classification \label{tab:
 | A                    |                          2.58834 |
 | N                    |                          3.61111 |
 | U                    |                          3.28139 |
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Average number of on-the-job trainings per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The table shows the average number of on-the-job trainings per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
 \end{minipage}
  
  
-Table: Average number of open training courses per job classification \label{tab:mean_offJob_Class}
+Table: Average number of open training courses per skill level \label{tab:mean_offJob_Class}
 
-| Job classification   | Mean number of open training courses |
+| Skill level   | Mean number|
 |:---------------------|-----------------------------------:|
 | 1                    |                            2.84033 |
 | 2                    |                            2.21544 |
@@ -169,8 +153,8 @@ Table: Average number of open training courses per job classification \label{tab
 | A                    |                            1.99916 |
 | N                    |                            3.16867 |
 | U                    |                            2.21875 |
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Average number of open courses per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:}  Average number of open courses per classification of the job in terms of skills. Category 1 represents skilled white-collar occupations, 2 represents semi-skilled white-collar occupations, 3 represents semi-skilled blue-collar occupations and 4 are elementary occupations. The categories A, N, U comprise respondents who have not worked more than 5 years, did not state any occupation or where the skill level is unknown, respectively.}
 \end{minipage}
 
 # Lasso Logistic Model 
@@ -203,14 +187,9 @@ This leads to an optimal $\lambda$  of 29.764 for on-the-job training and an opt
 \label{lasso_logit}
 \end{figure}
 ![](..\Results\Plots\lasso_logit_on_job.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Lasso path of the candidate logit models for on-the-job training.}
-\end{minipage}
 ![](..\Results\Plots\lasso_logit_open_educ.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Lasso path of the candidate logit models for open education.}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The figures show the Lasso path of the candidate logit models for on-the-job training and open education.}
 \end{minipage}
 \vspace{0.5cm}
 
@@ -246,14 +225,10 @@ Finally, we evaluate the accuracy of the Lasso logit model. Figure \ref{confusio
 \label{confusion_logit}
 \end{figure}
 ![](..\Results\Plots\confusion_on_job.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize The confusion matrix of the regularized logit model for on-the-job training shows the accuracy of the model with 10929 true negative and 88 true positive predictions.}
-\end{minipage}
 ![](..\Results\Plots\confusion_open_educ.png){ width=50% }
 \medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize The confusion matrix of the regularized logit model for open courses shows the accuracy of the model with 10965 true positive and 64 true negative predictions.}
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} a) The confusion matrix of the regularized logit model for on-the-job training shows the accuracy of the model with 10929 true negative and 88 true positive predictions. b) The confusion matrix of the regularized logit model for  open courses shows the accuracy of the model with 10965 true positive and 64 true negative predictions.}
 \end{minipage}
 \vspace{0.5cm}
 
@@ -270,11 +245,10 @@ Table: Accuracy of the Lasso logistic model \label{logit_accuracy}
 |**Open education**   |                        |                 |                                  
 |  Training accuracy  |   0.8185               | 0.4996          |
 |  Test accuracy      |   0.8188               | 0.5021          |
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize The table shows the accuracy of the Lasso logistic model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for both training and test data.}
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the accuracy of the Lasso logistic model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for both training and test data.}
 \end{minipage}
-
+\vspace{0.5cm}
 
 # Lasso Linear Model
 
@@ -301,16 +275,12 @@ Figure \ref{fig:lasso} shows the lasso regularization path of the linear candida
 \label{fig:lasso}
 \end{figure}
 ![](..\Results\Plots\lasso_path_onJob.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Lasso path of the candidate linear models for on-the-job training.}
-\end{minipage}
 ![](..\Results\Plots\lasso_path_openeduc.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Lasso path of the candidate linear models for open courses.}
+\begin{minipage}{1\textwidth}
+{\footnotesize \textit{Note:} The figures show the Lasso path of the candidate linear models for on-the-job training and open education.}
 \end{minipage}
 \vspace{0.5cm}
+
 
 
 
@@ -353,14 +323,9 @@ Turning to open courses it is also evident that the regularized model performs b
 \label{fig:oos}
 \end{figure}
 ![](..\Results\Plots\outofsample_validation_onJob.png){ width=50% } 
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Out-of-sample performance of the Lasso regularized linear model compared to the linear model for on-the-job training.}
-\end{minipage}
 ![](..\Results\Plots\outofsample_validation_openEduc.png){ width=50% }
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize Out-of-sample performance of the Lasso regularized linear model compared to the linear model for open education.}
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The figures show a) the out-of-sample performance of the Lasso regularized linear model compared to the linear model for on-the-job training and b) the Out-of-sample performance of the Lasso regularized linear model compared to the linear model for open education.}
 \end{minipage}
 \vspace{0.5cm}
 
@@ -376,9 +341,8 @@ Table: Accuracy of the Lasso linear model \label{tab:lin_accuracy}
 |**Open education**   |                        |                 |                                  
 |  Training accuracy  |    0.0967              |        0.0989   |
 |  Test accuracy      |   -0.0071               | -0.0096         |
-\medskip
-\begin{minipage}{0.4\textwidth} 
-{\scriptsize The table shows the accuracy of the Lasso linear model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for the test data.}
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the accuracy of the Lasso linear model compared to the accuracy of the unregularized model. The Lasso regularized model yields higher accuracy scores for the test data.}
 \end{minipage}
 
 # Conclusio and Future Research
@@ -396,6 +360,115 @@ Applying a Lasso logistic model to analyze training partcipation represent a gre
 
 \footnotesize
 
+Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
+
+|     |   Coefficients | Feature                                                                      |
+|----:|---------------:|:-----------------------------------------------------------------------------|
+|   0 |   -0.0173091   | age_r                                                                        |
+|   1 |    0.00648863  | j_q03b                                                                       |
+|   2 |    0.0323998   | yrsget                                                                       |
+|   3 |    0.014883    | c_q09                                                                        |
+|   4 |    0.00407624  | c_q10a                                                                       |
+|   5 |    0.0688914   | readytolearn                                                                 |
+|   6 |   -4.95059e-08 | earnmthallppp                                                                |
+|   7 |    0.389253    | computerexperience_Yes                                                       |
+|   8 |    0.152316    | d_q09_A temporary employment agency contract                                 |
+|   9 |   -0.0685864   | d_q09_An apprenticeship or other training scheme                             |
+|  10 |    0.000118794 | d_q09_An indefinite contract                                                 |
+|  11 |   -0.249488    | d_q09_No contract                                                            |
+|  12 |    0.268225    | d_q09_Other                                                                  |
+|  13 |    0.0919625   | f_q07a_Yes                                                                   |
+|  14 |   -0.00312127  | b_q01b_Engineering, manufacturing and construction                           |
+|  15 |   -0.079488    | b_q01b_General programmes                                                    |
+|  16 |    0.192744    | b_q01b_Health and welfare                                                    |
+|  17 |   -0.0830876   | b_q01b_Humanities, languages and arts                                        |
+|  18 |    0.0623138   | b_q01b_Science, mathematics and computing                                    |
+|  19 |   -0.0454431   | b_q01b_Services                                                              |
+|  20 |   -0.00709438  | b_q01b_Social sciences, business and law                                     |
+|  21 |    0.0955665   | b_q01b_Teacher training and education science                                |
+|  22 |    0.0628176   | d_q06b_Increased                                                             |
+|  23 |   -0.0100635   | d_q06b_Stayed more or less the same                                          |
+|  24 |    0.0822428   | d_q04_t_Employee, supervising fewer than 5 people                            |
+|  25 |    0.112577    | d_q04_t_Employee, supervising more than 5 people                             |
+|  26 |   -0.162508    | g_q08_Yes                                                                    |
+|  27 |   -0.119125    | pared_At least one parent has attained tertiary                              |
+|  28 |   -0.0624561   | pared_Neither parent has attained upper secondary                            |
+|  29 |   -0.0492441   | gender_r_Male                                                                |
+|  30 |   -0.655047    | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24         |
+|  31 |   -0.00587444  | d_q13c_Every day                                                             |
+|  32 |   -0.132742    | d_q13c_Less than once a month                                                |
+|  33 |   -0.159028    | d_q13c_Less than once a week but at least once a month                       |
+|  34 |   -0.375997    | d_q13c_Never                                                                 |
+|  35 |   -0.160666    | j_q04a_Yes                                                                   |
+|  36 |    0.343026    | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                           |
+|  37 |   -0.162479    | edcat8_Primary or less (ISCED 1 or less)                                     |
+|  38 |    0.128055    | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)               |
+|  39 |    0.350122    | edcat8_Tertiary – bachelor degree (ISCED 5A)                                 |
+|  40 |    0.31369     | edcat8_Tertiary – master degree (ISCED 5A)                                   |
+|  41 |    0.165938    | edcat8_Tertiary – professional degree (ISCED 5B)                             |
+|  42 |   -0.152984    | edcat8_Tertiary – research degree (ISCED 6)                                  |
+|  43 |    0.0797353   | edcat8_Upper secondary (ISCED 3A-B, C long)                                  |
+|  44 |    0.160175    | g_q07_Yes                                                                    |
+|  45 |    0.00541096  | vet_True                                                                     |
+|  46 |    0.100965    | g_q05d_Every day                                                             |
+|  47 |   -0.104847    | g_q05d_Less than once a month                                                |
+|  48 |    0.0893642   | g_q05d_Less than once a week but at least once a month                       |
+|  49 |    0.0191254   | g_q05d_Never                                                                 |
+|  50 |   -0.308108    | d_q14_Extremely dissatisfied                                                 |
+|  51 |   -0.00958417  | d_q14_Extremely satisfied                                                    |
+|  52 |   -0.104017    | d_q14_Neither satisfied nor dissatisfied                                     |
+|  53 |   -0.0803196   | d_q14_Satisfied                                                              |
+|  54 |    0.0423771   | g_q05a_Every day                                                             |
+|  55 |   -0.0825071   | g_q05a_Less than once a month                                                |
+|  56 |    0.108813    | g_q05a_Less than once a week but at least once a month                       |
+|  57 |   -0.0223103   | g_q05a_Never                                                                 |
+|  58 |    0.153748    | g_q05e_Every day                                                             |
+|  59 |    0.10127     | g_q05e_Less than once a month                                                |
+|  60 |    0.118944    | g_q05e_Less than once a week but at least once a month                       |
+|  61 |    0.162112    | g_q05e_Never                                                                 |
+|  62 |    0.0906379   | g_q05f_Every day                                                             |
+|  63 |   -0.0120091   | g_q05f_Less than once a month                                                |
+|  64 |   -0.105233    | g_q05f_Less than once a week but at least once a month                       |
+|  65 |   -0.0498476   | g_q05f_Never                                                                 |
+|  66 |   -0.151607    | g_q05g_Every day                                                             |
+|  67 |    0.0534463   | g_q05g_Less than once a month                                                |
+|  68 |    0.0319572   | g_q05g_Less than once a week but at least once a month                       |
+|  69 |   -0.0987864   | g_q05g_Never                                                                 |
+|  70 |    0.00587424  | g_q05h_Every day                                                             |
+|  71 |   -0.00152421  | g_q05h_Less than once a month                                                |
+|  72 |   -0.0529479   | g_q05h_Less than once a week but at least once a month                       |
+|  73 |   -0.390016    | g_q05h_Never                                                                 |
+|  74 |    0.245238    | f_q07b_Yes                                                                   |
+|  75 |   -0.125719    | b_q10c_Not useful at all                                                     |
+|  76 |    0.431681    | b_q10c_Somewhat useful                                                       |
+|  77 |   -0.0221019   | b_q10c_Very useful                                                           |
+|  78 |   -0.0368781   | d_q12c_1 to 6 months                                                         |
+|  79 |   -0.0163393   | d_q12c_3 years or more                                                       |
+|  80 |   -0.137065    | d_q12c_7 to 11 months                                                        |
+|  81 |   -0.277454    | d_q12c_Less than 1 month                                                     |
+|  82 |    0.0594719   | d_q12c_None                                                                  |
+|  83 |    0.0659232   | g_q05c_Every day                                                             |
+|  84 |   -0.126711    | g_q05c_Less than once a month                                                |
+|  85 |   -0.0997177   | g_q05c_Less than once a week but at least once a month                       |
+|  86 |   -0.250353    | g_q05c_Never                                                                 |
+|  87 |   -0.123279    | d_q12b_A lower level would be sufficient                                     |
+|  88 |   -0.177648    | d_q12b_This level is necessary                                               |
+|  89 |    0.111568    | d_q06a_11 to 50 people                                                       |
+|  90 |    0.280167    | d_q06a_251 to 1000 people                                                    |
+|  91 |    0.22403     | d_q06a_51 to 250 people                                                      |
+|  92 |    0.293531    | d_q06a_More than 1000 people                                                 |
+|  93 |   -0.277048    | d_q03_The private sector (for example a company)                             |
+|  94 |   -0.1113      | d_q03_The public sector (for example the local government or a state school) |
+|  95 |    0.675257    | g_q04_Yes                                                                    |
+|  96 |    0.801725    | b_q10a_Yes                                                                   |
+|  97 |    0.0374759   | g_q06_Moderate                                                               |
+|  98 |   -0.0442568   | g_q06_Straightforward                                                        |
+|  99 |    0.101065    | skill_1                                                                      |
+| 100 |    0.00415191  | skill_2                                                                      |
+| 101 |    0.00447484  | skill_3                                                                      |
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the non-zero coefficients for the Lasso logistic model with on-the-job trainings as dependent variable. Penality weights are derived applying with 5-fold cross validation. The estimation includes country and industry controls.}
+\end{minipage}
 
 Table: Lasso logistic regression for off-job training \label{log_reg_open}
 
@@ -462,6 +535,10 @@ Table: Lasso logistic regression for off-job training \label{log_reg_open}
 | 58 |    0.78252     | b_q10a_Yes                                             |
 | 59 |    0.0366449   | g_q06_Moderate                                         |
 | 60 |    0.11028     | skill_1                                                |
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the non-zero coefficients for the Lasso logistic model with open education as dependent variable. Penality weights are derived applying with 5-fold cross validation. The estimation includes country and industry controls.}
+\end{minipage}
+
 
 Table: Lasso linear regression for on-job training \label{lin_reg_onjob}
 
@@ -568,6 +645,9 @@ Table: Lasso linear regression for on-job training \label{lin_reg_onjob}
 |  98 |   -0.245979    | skill_1                                                                               |
 |  99 |   -0.200437    | skill_2                                                                               |
 | 100 |   -0.0343195   | skill_3                                                                               |
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the non-zero coefficients for the Lasso linear model with the number of on-the-job trainings as dependent variable. Penality weights are derived applying with 5-fold cross validation. The estimation includes country and industry controls.}
+\end{minipage}
 
 Table: Lasso linear regression for off-job training \label{lin_reg_open}
 
@@ -676,115 +756,11 @@ Table: Lasso linear regression for off-job training \label{lin_reg_open}
 | 100 |    0.122717    | skill_1                                                                               |
 | 101 |   -0.00655556  | skill_2                                                                               |
 | 102 |    0.0684937   | skill_3                                                                               |
+\begin{minipage}{1\textwidth} 
+{\footnotesize \textit{Note:} The table shows the non-zero coefficients for the Lasso linear model with the number of open courses as dependent variable. Penality weights are derived applying with 5-fold cross validation. The estimation includes country and industry controls.}
+\end{minipage}
 
 
-
-Table: Lasso logistic regression for on-job training \label{log_reg_onjob}
-
-|     |   Coefficients | Feature                                                                      |
-|----:|---------------:|:-----------------------------------------------------------------------------|
-|   0 |   -0.0173091   | age_r                                                                        |
-|   1 |    0.00648863  | j_q03b                                                                       |
-|   2 |    0.0323998   | yrsget                                                                       |
-|   3 |    0.014883    | c_q09                                                                        |
-|   4 |    0.00407624  | c_q10a                                                                       |
-|   5 |    0.0688914   | readytolearn                                                                 |
-|   6 |   -4.95059e-08 | earnmthallppp                                                                |
-|   7 |    0.389253    | computerexperience_Yes                                                       |
-|   8 |    0.152316    | d_q09_A temporary employment agency contract                                 |
-|   9 |   -0.0685864   | d_q09_An apprenticeship or other training scheme                             |
-|  10 |    0.000118794 | d_q09_An indefinite contract                                                 |
-|  11 |   -0.249488    | d_q09_No contract                                                            |
-|  12 |    0.268225    | d_q09_Other                                                                  |
-|  13 |    0.0919625   | f_q07a_Yes                                                                   |
-|  14 |   -0.00312127  | b_q01b_Engineering, manufacturing and construction                           |
-|  15 |   -0.079488    | b_q01b_General programmes                                                    |
-|  16 |    0.192744    | b_q01b_Health and welfare                                                    |
-|  17 |   -0.0830876   | b_q01b_Humanities, languages and arts                                        |
-|  18 |    0.0623138   | b_q01b_Science, mathematics and computing                                    |
-|  19 |   -0.0454431   | b_q01b_Services                                                              |
-|  20 |   -0.00709438  | b_q01b_Social sciences, business and law                                     |
-|  21 |    0.0955665   | b_q01b_Teacher training and education science                                |
-|  22 |    0.0628176   | d_q06b_Increased                                                             |
-|  23 |   -0.0100635   | d_q06b_Stayed more or less the same                                          |
-|  24 |    0.0822428   | d_q04_t_Employee, supervising fewer than 5 people                            |
-|  25 |    0.112577    | d_q04_t_Employee, supervising more than 5 people                             |
-|  26 |   -0.162508    | g_q08_Yes                                                                    |
-|  27 |   -0.119125    | pared_At least one parent has attained tertiary                              |
-|  28 |   -0.0624561   | pared_Neither parent has attained upper secondary                            |
-|  29 |   -0.0492441   | gender_r_Male                                                                |
-|  30 |   -0.655047    | leaver1624_Not in education, did not complete ISCED 3, aged 16 to 24         |
-|  31 |   -0.00587444  | d_q13c_Every day                                                             |
-|  32 |   -0.132742    | d_q13c_Less than once a month                                                |
-|  33 |   -0.159028    | d_q13c_Less than once a week but at least once a month                       |
-|  34 |   -0.375997    | d_q13c_Never                                                                 |
-|  35 |   -0.160666    | j_q04a_Yes                                                                   |
-|  36 |    0.343026    | edcat8_Post-secondary, non-tertiary (ISCED 4A-B-C)                           |
-|  37 |   -0.162479    | edcat8_Primary or less (ISCED 1 or less)                                     |
-|  38 |    0.128055    | edcat8_Tertiary - bachelor/master/research degree (ISCED 5A/6)               |
-|  39 |    0.350122    | edcat8_Tertiary – bachelor degree (ISCED 5A)                                 |
-|  40 |    0.31369     | edcat8_Tertiary – master degree (ISCED 5A)                                   |
-|  41 |    0.165938    | edcat8_Tertiary – professional degree (ISCED 5B)                             |
-|  42 |   -0.152984    | edcat8_Tertiary – research degree (ISCED 6)                                  |
-|  43 |    0.0797353   | edcat8_Upper secondary (ISCED 3A-B, C long)                                  |
-|  44 |    0.160175    | g_q07_Yes                                                                    |
-|  45 |    0.00541096  | vet_True                                                                     |
-|  46 |    0.100965    | g_q05d_Every day                                                             |
-|  47 |   -0.104847    | g_q05d_Less than once a month                                                |
-|  48 |    0.0893642   | g_q05d_Less than once a week but at least once a month                       |
-|  49 |    0.0191254   | g_q05d_Never                                                                 |
-|  50 |   -0.308108    | d_q14_Extremely dissatisfied                                                 |
-|  51 |   -0.00958417  | d_q14_Extremely satisfied                                                    |
-|  52 |   -0.104017    | d_q14_Neither satisfied nor dissatisfied                                     |
-|  53 |   -0.0803196   | d_q14_Satisfied                                                              |
-|  54 |    0.0423771   | g_q05a_Every day                                                             |
-|  55 |   -0.0825071   | g_q05a_Less than once a month                                                |
-|  56 |    0.108813    | g_q05a_Less than once a week but at least once a month                       |
-|  57 |   -0.0223103   | g_q05a_Never                                                                 |
-|  58 |    0.153748    | g_q05e_Every day                                                             |
-|  59 |    0.10127     | g_q05e_Less than once a month                                                |
-|  60 |    0.118944    | g_q05e_Less than once a week but at least once a month                       |
-|  61 |    0.162112    | g_q05e_Never                                                                 |
-|  62 |    0.0906379   | g_q05f_Every day                                                             |
-|  63 |   -0.0120091   | g_q05f_Less than once a month                                                |
-|  64 |   -0.105233    | g_q05f_Less than once a week but at least once a month                       |
-|  65 |   -0.0498476   | g_q05f_Never                                                                 |
-|  66 |   -0.151607    | g_q05g_Every day                                                             |
-|  67 |    0.0534463   | g_q05g_Less than once a month                                                |
-|  68 |    0.0319572   | g_q05g_Less than once a week but at least once a month                       |
-|  69 |   -0.0987864   | g_q05g_Never                                                                 |
-|  70 |    0.00587424  | g_q05h_Every day                                                             |
-|  71 |   -0.00152421  | g_q05h_Less than once a month                                                |
-|  72 |   -0.0529479   | g_q05h_Less than once a week but at least once a month                       |
-|  73 |   -0.390016    | g_q05h_Never                                                                 |
-|  74 |    0.245238    | f_q07b_Yes                                                                   |
-|  75 |   -0.125719    | b_q10c_Not useful at all                                                     |
-|  76 |    0.431681    | b_q10c_Somewhat useful                                                       |
-|  77 |   -0.0221019   | b_q10c_Very useful                                                           |
-|  78 |   -0.0368781   | d_q12c_1 to 6 months                                                         |
-|  79 |   -0.0163393   | d_q12c_3 years or more                                                       |
-|  80 |   -0.137065    | d_q12c_7 to 11 months                                                        |
-|  81 |   -0.277454    | d_q12c_Less than 1 month                                                     |
-|  82 |    0.0594719   | d_q12c_None                                                                  |
-|  83 |    0.0659232   | g_q05c_Every day                                                             |
-|  84 |   -0.126711    | g_q05c_Less than once a month                                                |
-|  85 |   -0.0997177   | g_q05c_Less than once a week but at least once a month                       |
-|  86 |   -0.250353    | g_q05c_Never                                                                 |
-|  87 |   -0.123279    | d_q12b_A lower level would be sufficient                                     |
-|  88 |   -0.177648    | d_q12b_This level is necessary                                               |
-|  89 |    0.111568    | d_q06a_11 to 50 people                                                       |
-|  90 |    0.280167    | d_q06a_251 to 1000 people                                                    |
-|  91 |    0.22403     | d_q06a_51 to 250 people                                                      |
-|  92 |    0.293531    | d_q06a_More than 1000 people                                                 |
-|  93 |   -0.277048    | d_q03_The private sector (for example a company)                             |
-|  94 |   -0.1113      | d_q03_The public sector (for example the local government or a state school) |
-|  95 |    0.675257    | g_q04_Yes                                                                    |
-|  96 |    0.801725    | b_q10a_Yes                                                                   |
-|  97 |    0.0374759   | g_q06_Moderate                                                               |
-|  98 |   -0.0442568   | g_q06_Straightforward                                                        |
-|  99 |    0.101065    | skill_1                                                                      |
-| 100 |    0.00415191  | skill_2                                                                      |
-| 101 |    0.00447484  | skill_3                                                                      |
 
 \normalsize
 
